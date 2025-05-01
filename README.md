@@ -6,4 +6,4 @@ Surge como una idea para conectar a los gamers entre sí y así puedan armar gru
 - Sebastián Bustos
 
 ## Detalles técnicos
-Es la primerz vez que me pongo a usar docker compose, espero que esto salga bien (Sebastian B). 
+Es la primera vez que me pongo a usar docker compose, espero que esto salga bien (Sebastian B). 
