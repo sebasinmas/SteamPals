@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.steampals</groupId>
-	<artifactId>SteamPals</artifactId>
+	<artifactId>steampals</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SteamPals</name>
+	<name>steampals</name>
 	<description>Aplicación para conectar gamers</description>
 	<url/>
 	<licenses>
