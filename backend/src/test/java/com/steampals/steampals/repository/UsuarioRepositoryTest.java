@@ -1,4 +1,4 @@
-package com.steampals.steampals.repository;
+package com.steampals.SteamPals.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 

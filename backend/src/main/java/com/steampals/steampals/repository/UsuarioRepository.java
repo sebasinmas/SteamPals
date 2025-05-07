@@ -1,4 +1,4 @@
-package com.steampals.steampals.repository;
+package com.steampals.SteamPals.model;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.steampals.steampals.model.Usuario;
