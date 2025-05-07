@@ -1,5 +1,6 @@
 package com.steampals.SteamPals.repository;
 
+
 import com.steampals.SteamPals.model.Grupo;
 import com.steampals.SteamPals.model.GrupoRepository;
 import com.steampals.SteamPals.model.Usuario;
@@ -52,6 +53,15 @@ public class GrupoRepositoryTest {
         resultado.get().AgregarMiembro(usuario);
         resultado.get().eliminarMiembro(usuario);
         assertFalse(!resultado.get().miembros.contains(usuario));
+    }
+    void grupoDebeEliminarMiembro() {
+        Optional<Grupo> resultado = grupoRepository.findById(0L);
+        Usuario usuario = new Usuario();
+        usuario.setUsuario("Seba");
+        MensajeGrupo mensajeGrupo = new MensajeGrupo();
+        mensajeGrupo.setTexto("Hola");
+        resultado.get().AgregarMensajeGrupal(mensajeGrupo);
+        assertTrue(resultado.get().mensajes.contains(mensajeGrupo));
     }
 
 }
