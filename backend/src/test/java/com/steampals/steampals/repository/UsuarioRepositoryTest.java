@@ -16,7 +16,7 @@ import com.steampals.steampals.model.Usuario;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UsuarioRepositoryTest {
+class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
