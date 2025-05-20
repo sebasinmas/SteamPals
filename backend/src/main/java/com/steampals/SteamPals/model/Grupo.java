@@ -23,8 +23,8 @@ public class Grupo{
     private String nombre;
     private String fechaCreacion;
     private String descripcion;
-    private List<Usuario> miembros;
-    private List<MensajeGrupal> mensajes = new ArrayList<>();
+    private List<Usuario> miembros= new ArrayList<Usuario>();
+    private List<MensajeGrupal> mensajes = new ArrayList<MensajeGrupal>();
 
 
     public void AgregarMiembro(Usuario u){
