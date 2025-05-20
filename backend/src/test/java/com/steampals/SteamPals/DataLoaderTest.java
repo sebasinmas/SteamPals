@@ -68,7 +68,7 @@ class DataLoaderTest {
     }
 
     @Test
-    void run_shouldThrowDataAccessException_whenSaveFails() {
+    void seDebeLanzarUnaExcepcionCuandoFallaElGuardado() {
         // Arrange
         when(usuarioRepository.count()).thenReturn(0L);
         doThrow(new RuntimeException("DB error")).when(usuarioRepository).saveAll(anyList());
