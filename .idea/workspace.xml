@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="003e2af2-cacf-486c-be69-1d0b6bd36304" name="Changes" comment="Cambios menores 2">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/controller/MensajeGrupalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Biblioteca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Juego.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Match.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Mensaje.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/UsuarioTieneJuego.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/dto/MensajeGrupalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/MensajeGruaplRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/MensajeGrupalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/UsuarioTieneJuego.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/UsuarioTieneJuego.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="ftr_LuckProgress" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,19 +54,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ftr__LuckProgress&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bigti/OneDrive/Documentos/GitHub/JuegoBricks/SteamPals/backend/src/main/java/com/steampals/SteamPals/model&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bigti/OneDrive/Documentos/GitHub/JuegoBricks/SteamPals/backend/src/main/java/com/steampals/SteamPals/model",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SteamPals" />
