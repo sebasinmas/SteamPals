@@ -1,0 +1,69 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"003e2af2-cacf-486c-be69-1d0b6bd36304\" name=\"Changes\" comment=\"First Commit + clase grupo + grupotests Terminado\">\r\n      <change afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;ElLuck15&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/sebasinmas/SteamPals.git&quot;,\r\n    &quot;accountId&quot;: &quot;dffa395f-96f7-43fd-a347-32174c222967&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2wkfb99JSWDvbtWd71Cw6ACCyZd\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;ftr__LuckProgress&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/bigti/OneDrive/Documentos/GitHub/JuegoBricks/SteamPals/backend/src/main/java/com/steampals/SteamPals/model&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"SteamPals\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"SteamPals\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"003e2af2-cacf-486c-be69-1d0b6bd36304\" name=\"Changes\" comment=\"\" />\r\n      <created>1746590560385</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1746590560385</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First Commit + clase grupo + grupotests\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746616836008</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746616836010</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"First Commit + clase grupo + grupotests Terminado\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746617102648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746617102648</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First Commit + clase grupo + grupotests\" />\r\n    <MESSAGE value=\"First Commit + clase grupo + grupotests Terminado\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"First Commit + clase grupo + grupotests Terminado\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b17d2165e8909f1ac739d5fbb4d7adb3b051d7f9)
++++ b/.idea/workspace.xml	(date 1748404829991)
+@@ -4,10 +4,20 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="003e2af2-cacf-486c-be69-1d0b6bd36304" name="Changes" comment="First Commit + clase grupo + grupotests Terminado">
+-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java" afterDir="false" />
++    <list default="true" id="003e2af2-cacf-486c-be69-1d0b6bd36304" name="Changes" comment="Cambios menores 2">
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/controller/MensajeGrupalController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Biblioteca.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Juego.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Match.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Mensaje.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/UsuarioTieneJuego.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/dto/MensajeGrupalDTO.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/MensajeGruaplRepository.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/MensajeGrupalService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -106,12 +116,30 @@
+       <option name="project" value="LOCAL" />
+       <updated>1746617102648</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Cambios menores">
++      <option name="closed" value="true" />
++      <created>1747745882678</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1747745882678</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Cambios menores 2">
++      <option name="closed" value="true" />
++      <created>1747745895355</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1747745895355</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="First Commit + clase grupo + grupotests" />
+     <MESSAGE value="First Commit + clase grupo + grupotests Terminado" />
+-    <option name="LAST_COMMIT_MESSAGE" value="First Commit + clase grupo + grupotests Terminado" />
++    <MESSAGE value="Cambios menores" />
++    <MESSAGE value="Cambios menores 2" />
++    <option name="LAST_COMMIT_MESSAGE" value="Cambios menores 2" />
+   </component>
+ </project>
+\ No newline at end of file
