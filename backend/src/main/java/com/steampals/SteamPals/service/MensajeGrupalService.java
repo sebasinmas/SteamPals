@@ -1,4 +1,4 @@
 package com.steampals.SteamPals.service;
 
-public class GrupoService {
+public class MensajeGrupalService {
 }

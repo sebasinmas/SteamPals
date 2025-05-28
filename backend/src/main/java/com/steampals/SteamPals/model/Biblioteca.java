@@ -12,8 +12,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MensajeGrupal {
+public class Biblioteca {
     private long id;
-    private String mensaje;
-    private Usuario emisor;
+    private int numeroDeJuegos;
+    private int cantidadDeLogros;
 }
