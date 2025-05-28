@@ -12,8 +12,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MensajeGrupal {
+public class Match {
     private long id;
-    private String mensaje;
-    private Usuario emisor;
+    private boolean usuario1like;
+    private boolean usuario2like;
+    private boolean completo;
 }

@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="003e2af2-cacf-486c-be69-1d0b6bd36304" name="Changes" comment="First Commit + clase grupo + grupotests Terminado">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Grupo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/GrupoRepository.java" afterDir="false" />
+    <list default="true" id="003e2af2-cacf-486c-be69-1d0b6bd36304" name="Changes" comment="Cambios menores 2">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/controller/MensajeGrupalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Biblioteca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Juego.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Match.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/Mensaje.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/UsuarioTieneJuego.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/dto/MensajeGrupalDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/repository/MensajeGruaplRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/MensajeGrupalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/model/MensajeGrupal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/steampals/SteamPals/service/GrupoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,12 +116,30 @@
       <option name="project" value="LOCAL" />
       <updated>1746617102648</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Cambios menores">
+      <option name="closed" value="true" />
+      <created>1747745882678</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747745882678</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Cambios menores 2">
+      <option name="closed" value="true" />
+      <created>1747745895355</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747745895355</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit + clase grupo + grupotests" />
     <MESSAGE value="First Commit + clase grupo + grupotests Terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit + clase grupo + grupotests Terminado" />
+    <MESSAGE value="Cambios menores" />
+    <MESSAGE value="Cambios menores 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios menores 2" />
   </component>
 </project>
