@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.model;
+package com.steampals.steampals.model;
 
 public class Juego {
 }

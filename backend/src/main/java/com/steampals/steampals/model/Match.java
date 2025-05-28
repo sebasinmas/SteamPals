@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.model;
+package com.steampals.steampals.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

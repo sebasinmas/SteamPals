@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.repository.UsuarioRepository;
+package com.steampals.steampals;
 
 import java.util.List;
 import java.util.logging.Logger;

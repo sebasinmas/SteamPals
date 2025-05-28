@@ -1,5 +1,6 @@
 package com.steampals.steampals.model.dto;
-import com.steampals.SteamPals.model.Usuario;
+import com.steampals.steampals.model.MensajeGrupal;
+import com.steampals.steampals.model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

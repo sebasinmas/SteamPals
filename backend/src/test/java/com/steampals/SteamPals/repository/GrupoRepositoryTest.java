@@ -1,9 +1,8 @@
-package com.steampals.SteamPals.repository;
+package com.steampals.steampals.repository;
 
 
-import com.steampals.SteamPals.model.Grupo;
-import com.steampals.SteamPals.model.GrupoRepository;
-import com.steampals.SteamPals.model.Usuario;
+import com.steampals.steampals.model.Grupo;
+import com.steampals.steampals.model.Usuario;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +21,7 @@ public class GrupoRepositoryTest {
     @BeforeEach // este método se ejecuta antes de cada prueba
     public void setup() {
         // Limpia base por si acaso
-        GrupoRepository.deleteAll();
+        grupoRepository.deleteAll();
 
         // Crea un grupo de prueba
         Grupo grupo = new Grupo();
@@ -40,7 +39,7 @@ public class GrupoRepositoryTest {
         usuario.setUsuario("Seba");
 
         resultado.get().AgregarMiembro(usuario);
-        assertTrue(resultado.get().find(usuario));
+        assertTrue((resultado.get()).Find(usuario));
     }
 
     @Test

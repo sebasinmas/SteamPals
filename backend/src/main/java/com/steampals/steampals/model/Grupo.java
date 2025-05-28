@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.model;
+package com.steampals.steampals.model;
 
 import java.util.ArrayList;
 import java.util.List;
