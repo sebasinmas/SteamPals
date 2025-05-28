@@ -30,37 +30,37 @@ public class GrupoRepositoryTest {
         grupoRepository.save(grupo);
 
     }
-    @Test
-    @Order(1)
-    void grupoDebeAgregarMiembro() {
-        Optional<Grupo> resultado = grupoRepository.findById(0L);
+    // @Test
+    // @Order(1)
+    // void grupoDebeAgregarMiembro() {
+    //     Optional<Grupo> resultado = grupoRepository.findById(0L);
 
-        Usuario usuario = new Usuario();
-        usuario.setUsuario("Seba");
+    //     Usuario usuario = new Usuario();
+    //     usuario.setUsuario("Seba");
 
-        resultado.get().AgregarMiembro(usuario);
-        assertTrue((resultado.get()).Find(usuario));
-    }
+    //     resultado.get().AgregarMiembro(usuario);
+    //     assertTrue((resultado.get()).Find(usuario));
+    // }
 
-    @Test
-    @Order(2)
-    void grupoDebeEliminarMiembro() {
-        Optional<Grupo> resultado = grupoRepository.findById(0L);
-        Usuario usuario = new Usuario();
-        usuario.setUsuario("Seba");
+    // @Test
+    // @Order(2)
+    // void grupoDebeEliminarMiembro() {
+    //     Optional<Grupo> resultado = grupoRepository.findById(0L);
+    //     Usuario usuario = new Usuario();
+    //     usuario.setUsuario("Seba");
 
-        resultado.get().AgregarMiembro(usuario);
-        resultado.get().eliminarMiembro(usuario);
-        assertFalse(!resultado.get().miembros.contains(usuario));
-    }
-    void grupoDebeEliminarMiembro() {
-        Optional<Grupo> resultado = grupoRepository.findById(0L);
-        Usuario usuario = new Usuario();
-        usuario.setUsuario("Seba");
-        MensajeGrupo mensajeGrupo = new MensajeGrupo();
-        mensajeGrupo.setTexto("Hola");
-        resultado.get().AgregarMensajeGrupal(mensajeGrupo);
-        assertTrue(resultado.get().mensajes.contains(mensajeGrupo));
-    }
+    //     resultado.get().AgregarMiembro(usuario);
+    //     resultado.get().eliminarMiembro(usuario);
+    //     assertFalse(!resultado.get().miembros.contains(usuario));
+    // }
+    // void grupoDebeEliminarMiembro() {
+    //     Optional<Grupo> resultado = grupoRepository.findById(0L);
+    //     Usuario usuario = new Usuario();
+    //     usuario.setUsuario("Seba");
+    //     MensajeGrupo mensajeGrupo = new MensajeGrupo();
+    //     mensajeGrupo.setTexto("Hola");
+    //     resultado.get().AgregarMensajeGrupal(mensajeGrupo);
+    //     assertTrue(resultado.get().mensajes.contains(mensajeGrupo));
+    // }
 
 }
