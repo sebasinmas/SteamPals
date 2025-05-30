@@ -8,6 +8,7 @@ class SteamPalsApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }

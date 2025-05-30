@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.controller;
+package com.steampals.steampals.controller;
 
 public class MensajeGrupalController {
 }

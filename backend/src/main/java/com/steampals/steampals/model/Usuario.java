@@ -1,4 +1,6 @@
-package com.steampals.SteamPals.model;
+package com.steampals.steampals.model;
+
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,4 +26,18 @@ public class Usuario {
     private int edad;
     private String pais;
     private String descripcion;
+    private List<Mensaje> listaMsgEnv;
+    //Mensajes enviados
+    private List<Mensaje> listaMsgRec;
+    //Mensajes recibidos
+    private List<Match> listaMatchs;
+    //Matchs en las que el usuario participó
+    private List<MensajeGrupal> listaMsgGrupalEnv;
+    //Mensajes grupales enviados
+    private List<MensajeGrupal> listaMsgGrupalRec;
+    //Mensajes grupales recibidos
+    private Biblioteca bibliotecaSteam;
+    private List<Grupo> listaGruposPertenecientes;
+    //Grupos a los que pertenece el usuario
+
 }

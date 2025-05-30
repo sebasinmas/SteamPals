@@ -1,4 +1,4 @@
-package com.steampals.SteamPals.repository.UsuarioRepository;
+package com.steampals.steampals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,8 +1,6 @@
-package com.steampals.SteamPals.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.steampals.steampals.model;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +14,5 @@ public class Biblioteca {
     private long id;
     private int numeroDeJuegos;
     private int cantidadDeLogros;
+    private List<Juego> juegos;
 }
