@@ -2,6 +2,7 @@ package com.steampals.steampals.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ import lombok.Setter;
 public class Juego {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(unique=true,nullable=false)
     private long id;
     private String nombre;
     private String img;

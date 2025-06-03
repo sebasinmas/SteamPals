@@ -5,9 +5,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.steampals.steampals.model.Grupo;
+import com.steampals.steampals.model.Match;
 @Repository
-public interface GrupoRepository extends JpaRepository<Grupo, Long> {
-    Optional<Grupo> findById(Long id);
-    Optional<Grupo> findByUser(Long id);
+public interface MatchRepository extends JpaRepository<Match, Long> {
+    Optional<Match> findById(Long id);
 }

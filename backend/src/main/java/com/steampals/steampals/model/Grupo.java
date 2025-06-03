@@ -2,6 +2,7 @@ package com.steampals.steampals.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ import lombok.Setter;
 public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique=true,nullable=false)
     private int id;
     private String nombre;
     private String fechaCreacion;

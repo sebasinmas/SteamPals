@@ -1,5 +1,6 @@
 package com.steampals.steampals.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,7 @@ import lombok.Setter;
 public class MensajeGrupal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique=true,nullable=false)
     private long id;
     private String mensaje;
 

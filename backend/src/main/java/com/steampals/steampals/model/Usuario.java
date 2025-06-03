@@ -1,5 +1,6 @@
 package com.steampals.steampals.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +32,7 @@ public class Usuario {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique=true,nullable=false)
     private long id;
     /**
      * Nombre de usuario del usuario, es un nickname no único
