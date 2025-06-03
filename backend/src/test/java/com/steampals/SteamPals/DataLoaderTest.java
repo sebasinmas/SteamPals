@@ -22,6 +22,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessResourceFailureException;
 
+import com.steampals.steampals.DataLoader;
+import com.steampals.steampals.DataLoader;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.repository.UsuarioRepository;
 

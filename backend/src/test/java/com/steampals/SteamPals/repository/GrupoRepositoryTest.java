@@ -3,6 +3,10 @@ package com.steampals.steampals.repository;
 
 import com.steampals.steampals.model.Grupo;
 import com.steampals.steampals.model.Usuario;
+import com.steampals.steampals.repository.GrupoRepository;
+
+import com.steampals.steampals.repository.GrupoRepository;
+
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

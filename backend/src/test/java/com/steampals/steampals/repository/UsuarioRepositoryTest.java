@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.steampals.steampals.model.Usuario;
+import com.steampals.steampals.repository.UsuarioRepository;
+import com.steampals.steampals.repository.UsuarioRepository;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
