@@ -19,6 +19,4 @@ public class Juego {
     private String genero;
     private String fechaDeLanzamiento;
     private String imagenUrl;
-    private int horasJugadas; // Total de horas jugadas por el usuario
-    private int cantidadDeLogros; // Total de logros obtenidos por el usuario
 }

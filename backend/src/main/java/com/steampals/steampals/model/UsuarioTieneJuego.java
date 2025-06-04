@@ -41,4 +41,9 @@ public class UsuarioTieneJuego {
      * Total de horas jugadas por el usuario en este juego.
      */
     private int horasJugadas;
+
+    /**
+     * Cantidad de logros obtenidos por el usuario en este juego.
+     */
+    private int cantidadDeLogros;
 }
