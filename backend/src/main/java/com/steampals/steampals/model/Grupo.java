@@ -19,7 +19,7 @@ import lombok.Setter;
 public class Grupo{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nombre;
     private String fechaCreacion;
     private String descripcion;

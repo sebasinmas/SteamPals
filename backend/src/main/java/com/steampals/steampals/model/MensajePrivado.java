@@ -33,18 +33,9 @@ public class MensajePrivado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * El contenido del mensaje.
-     */
     private String mensaje;
 
-    /**
-     * El usuario que envía el mensaje.
-     */
     private Usuario emisor;
 
-    /**
-     * El usuario que recibe el mensaje.
-     */
     private Usuario receptor;
 }

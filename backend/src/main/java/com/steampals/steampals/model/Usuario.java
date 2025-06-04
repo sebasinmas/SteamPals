@@ -31,7 +31,7 @@ public class Usuario {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     /**
      * Nombre de usuario del usuario, es un nickname no único
      */

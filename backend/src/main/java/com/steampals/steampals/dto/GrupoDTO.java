@@ -1,4 +1,4 @@
-package com.steampals.steampals.model.dto;
+package com.steampals.steampals.dto;
 import com.steampals.steampals.model.MensajeGrupal;
 import com.steampals.steampals.model.Usuario;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GrupoDTO {
-    private int id;
+    private Long id;
     private String nombre;
     private String fechaCreacion;
     private String descripcion;

@@ -1,4 +1,4 @@
-package com.steampals.steampals.model.dto;
+package com.steampals.steampals.dto;
 
 public class MensajeGrupalDTO {
 }
