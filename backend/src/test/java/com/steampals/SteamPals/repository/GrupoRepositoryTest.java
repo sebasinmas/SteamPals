@@ -29,7 +29,7 @@ public class GrupoRepositoryTest {
 
         // Crea un grupo de prueba
         Grupo grupo = new Grupo();
-        grupo.setId(0);
+        grupo.setId(0L);
 
         grupoRepository.save(grupo);
 

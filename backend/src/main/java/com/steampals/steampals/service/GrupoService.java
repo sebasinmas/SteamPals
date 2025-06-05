@@ -12,7 +12,7 @@ import com.steampals.steampals.repository.GrupoRepository;
 public class GrupoService {
     @Autowired
     GrupoRepository grupoRepository;
-    public ArrayList<Grupo> obtenerGrupo(){
+    public ArrayList<Grupo> obtenerGrupos(){
         return (ArrayList<Grupo>) grupoRepository.findAll();
     }
     public Grupo guardarGrupo(Grupo grupo){
