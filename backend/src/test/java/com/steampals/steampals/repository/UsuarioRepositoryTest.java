@@ -27,7 +27,7 @@ class UsuarioRepositoryTest {
 
         // Crea un usuario de prueba
         Usuario usuario = new Usuario();
-        usuario.setUsuario("Kevin");
+        usuario.setNombreUsuario("Kevin");
         usuario.setEmail("kevin@email.com");
 
         usuarioRepository.save(usuario);
@@ -39,7 +39,7 @@ class UsuarioRepositoryTest {
         Optional<Usuario> resultado = usuarioRepository.findByEmail("kevin@email.com");
 
         assertTrue(resultado.isPresent());
-        assertEquals("Kevin", resultado.get().getUsuario());
+        assertEquals("Kevin", resultado.get().getNombreUsuario());
     }
 
     @Test
