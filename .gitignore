@@ -1,7 +1,8 @@
-.vscode/*
-.vscode/*
-*.code-workspace    
-vscode/
-.vscode/settings.json
+# Ignorar carpeta .vscode completa
+.vscode/
 
-/.idea/*
+# Ignorar archivos de configuración de VSCode con extensión .code-workspace
+*.code-workspace
+
+# Ignorar carpeta .idea completa
+.idea/
