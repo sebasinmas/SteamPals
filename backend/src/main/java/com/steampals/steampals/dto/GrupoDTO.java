@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GrupoDTO {
-    private Long id;
+    private Long id; 
     private String nombre;
     private String fechaCreacion;
     private String descripcion;

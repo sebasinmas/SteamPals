@@ -5,10 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 /**
  * Representa un mensaje enviado dentro de un grupo.
@@ -31,6 +35,19 @@ public class MensajeGrupal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
+
     private String mensaje;
+
+    private LocalDateTime fechaEnvio;
+    /**
+     * Usuario que envió el mensaje.
+     */
+    @ManyToOne 
+    @JoinColumn(name = "emisor_id")
     private Usuario emisor;
+
 }

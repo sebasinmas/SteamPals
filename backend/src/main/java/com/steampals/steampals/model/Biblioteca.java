@@ -1,11 +1,15 @@
 package com.steampals.steampals.model;
-import java.util.List;
 
+
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,10 +25,11 @@ public class Biblioteca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(optional = false)
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne
-    private List<Juego> juegos;
+    @ManyToMany
+    private Set<Juego> juegos = new HashSet<>();
     private int numeroDeJuegos;
     private int cantidadDeLogros;
 }

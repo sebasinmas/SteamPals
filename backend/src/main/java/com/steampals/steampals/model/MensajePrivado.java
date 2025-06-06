@@ -1,5 +1,7 @@
 package com.steampals.steampals.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +11,8 @@ import lombok.Setter;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 
 /**
@@ -29,13 +33,20 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MensajePrivado {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
-
+    
     private String mensaje;
 
+    private LocalDateTime fechaEnvio;
+
+    @ManyToOne
+    @JoinColumn(name = "emisor_id")
     private Usuario emisor;
 
+    @ManyToOne
+    @JoinColumn(name = "receptor_id")
     private Usuario receptor;
+    
 }

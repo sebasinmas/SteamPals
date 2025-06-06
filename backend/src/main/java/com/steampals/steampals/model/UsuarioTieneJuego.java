@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -19,26 +20,21 @@ import jakarta.persistence.ManyToOne;
 public class UsuarioTieneJuego {
 
     /**
-     * Identificador único de esta relación usuario-juego.
+     * Identificador único de la relación usuario-juego.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    /**
-     * El usuario que posee o ha jugado este juego.
-     */
-    @ManyToOne(optional = false)
+    
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
     private Usuario usuario;
 
-    /**
-     * El juego que ha sido jugado por el usuario.
-     */
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name="juego_id")
     private Juego juego;
-
     /**
-     * Total de horas jugadas por el usuario en este juego.
+     * Cantidad de horas jugadas por el usuario en este juego.
      */
     private int horasJugadas;
 

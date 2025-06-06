@@ -9,7 +9,7 @@ import com.steampals.steampals.model.Grupo;
 
 import java.util.Optional;
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
-    @NonNull
-    Optional<Grupo> findById(@NonNull Long id);
-    Optional<Grupo> findByUser(Long id);
+    // @NonNull
+    // Optional<Grupo> findById(@NonNull Long id);
+    // Optional<Grupo> findByUser(Long id);
 }
