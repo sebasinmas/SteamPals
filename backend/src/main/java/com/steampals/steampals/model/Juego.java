@@ -1,37 +1,55 @@
 package com.steampals.steampals.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder
 public class Juego {
+  
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(unique=true,nullable=false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
-    private String img;
 
-    @OneToMany(targetEntity = Biblioteca.class, fetch = FetchType.LAZY)
-    private List<Biblioteca> bibliotecas;
-    @OneToMany(targetEntity = UsuarioTieneJuego.class, fetch = FetchType.LAZY)
-    private List<UsuarioTieneJuego> UsuarioTieneJuego;
+    @OneToMany(mappedBy = "juego")
+    private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
+    
+    /**
+     * Descripción del juego.
+     */
+    private String descripcion;
 
+    /**
+     * Nombre del desarrollador del juego.
+     */
+    private String desarrollador;
+
+    /**
+     * Género del juego.
+     */
+    private String genero;
+
+    /**
+     * Fecha de lanzamiento del juego.
+     */
+    private String fechaDeLanzamiento;
+
+    /**
+     * URL de la imagen del juego.
+     */
+    private String imagenUrl;
 }

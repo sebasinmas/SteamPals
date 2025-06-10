@@ -1,6 +1,12 @@
 package com.steampals.steampals.model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +14,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,23 +28,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder
 public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique=true,nullable=false)
     private Long id;
     private String nombre;
-    private String fechaCreacion;
-    // private String descripcion;
+    private LocalDate fechaCreacion;
+    private String descripcion;
 
-    @OneToMany(targetEntity = Usuario.class, fetch = FetchType.LAZY)
-    private List<Usuario> miembros;
-    @OneToMany(targetEntity = MensajeGrupal.class, fetch = FetchType.LAZY)
-    private List<MensajeGrupal> mensajes;
+    @OneToMany(mappedBy = "grupo")
+    private List<MensajeGrupal> mensajes = new ArrayList<>();
 
-
-    public void AgregarMiembro(Usuario u) {
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Usuario> miembros = new HashSet<>();
+    
+        public void AgregarMiembro(Usuario u) {
         if (miembros.contains(u)) {
             miembros.add(u);
         }
@@ -51,5 +57,4 @@ public class Grupo {
     public void enviarMensaje(MensajeGrupal m) {
         mensajes.add(m);
     }
-
 }
