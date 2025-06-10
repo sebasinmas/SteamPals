@@ -1,18 +1,13 @@
 package com.steampals.steampals.repository;
 
 
-import com.steampals.steampals.model.Grupo;
-<<<<<<< HEAD
-import com.steampals.steampals.model.Usuario;
-import com.steampals.steampals.repository.GrupoRepository;
-
-import com.steampals.steampals.repository.GrupoRepository;
-=======
->>>>>>> origin/main
-
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.steampals.steampals.model.Grupo;
 
 
 @SpringBootTest
