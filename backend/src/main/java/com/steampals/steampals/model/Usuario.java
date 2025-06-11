@@ -2,14 +2,14 @@ package com.steampals.steampals.model;
 
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
@@ -74,7 +74,8 @@ public class Usuario {
      * Rol del usuario, se utiliza para determinar los permisos del usuario en la
      * aplicación.
      */
-    private String rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     /**
      * Descripción del usuario, se utiliza para mostrar información adicional sobre
@@ -82,9 +83,12 @@ public class Usuario {
      */
     private String descripcion;
 
+    /**
+     * Lista de juegos favoritos del usuario, se utiliza para mostrar los juegos
+     * favoritos del usuario en la aplicación.
+     */
     private LocalDate fechaDeRegistro;
 
-    // Si quieres, puedes tener estas colecciones para facilitar consultas:
     @OneToMany(mappedBy = "usuario1")
     private Set<MatchUsuario> matchesComoUsuario1;
 
@@ -110,5 +114,12 @@ public class Usuario {
     @OneToMany(mappedBy = "emisor")
     private Set<MensajeGrupal> mensajesGrupalesEnviados = new HashSet<>();
     
-
+    /**
+     * Enumeración que representa los roles posibles de un usuario en la aplicación.
+     * USUARIO: Rol por defecto, con permisos básicos.
+     * ADMINISTRADOR: Rol con permisos avanzados para gestionar la aplicación.
+     */
+    public enum Rol {
+        USUARIO, ADMINISTRADOR
+    }
 }
