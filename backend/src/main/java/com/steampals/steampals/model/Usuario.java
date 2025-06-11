@@ -1,7 +1,9 @@
 package com.steampals.steampals.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -105,14 +107,14 @@ public class Usuario {
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     @Builder.Default
     @OneToMany(mappedBy = "emisor")
-    private Set<MensajePrivado> mensajesPrivEnviados = new HashSet<>();
+    private List<MensajePrivado> mensajesPrivEnviados = new ArrayList<>();
     @Builder.Default
     @OneToMany(mappedBy = "receptor")
-    private Set<MensajePrivado> mensajesPrivRecibidos = new HashSet<>();
+    private List<MensajePrivado> mensajesPrivRecibidos = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "emisor")
-    private Set<MensajeGrupal> mensajesGrupalesEnviados = new HashSet<>();
+    private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
     /**
      * Enumeración que representa los roles posibles de un usuario en la aplicación.
