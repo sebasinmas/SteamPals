@@ -91,6 +91,12 @@ public class Usuario {
      */
     private LocalDate fechaDeRegistro;
 
+    /**
+     * Indica si el usuario está suspendido, se utiliza para bloquear el acceso del
+     * usuario a la aplicación.
+     */
+    private Boolean suspendido;
+
     @OneToMany(mappedBy = "usuario1")
     private Set<MatchUsuario> matchesComoUsuario1;
 
@@ -116,6 +122,15 @@ public class Usuario {
     @OneToMany(mappedBy = "emisor")
     private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
+    @Builder.Default
+    @OneToMany(mappedBy = "reportado")
+    private List<Reporte> reportesRecibidos = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "reportador")
+    private List<Reporte> reportesRealizados = new ArrayList<>();
+
+
+
     /**
      * Enumeración que representa los roles posibles de un usuario en la aplicación.
      * USUARIO: Rol por defecto, con permisos básicos.
