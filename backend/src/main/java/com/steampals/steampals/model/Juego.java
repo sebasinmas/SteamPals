@@ -52,4 +52,5 @@ public class Juego {
      * URL de la imagen del juego.
      */
     private String imagenUrl;
+
 }
