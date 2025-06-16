@@ -25,7 +25,10 @@ public class Reporte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    /**
+     * Motivo del reporte, describe la razón por la cual se está reportando al
+     * usuario.
+     */
     private String motivo;
 
     @ManyToOne
