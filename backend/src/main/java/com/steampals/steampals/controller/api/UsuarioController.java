@@ -21,7 +21,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/usuario")
-    public ResponseEntity<?> postUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
+    public ResponseEntity<?> crearUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
          try {
             Usuario nuevoUsuario = usuarioService.registrarUsuario(registroUsuarioDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con ID: " + nuevoUsuario.getId());
