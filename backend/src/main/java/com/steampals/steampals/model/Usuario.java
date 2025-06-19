@@ -103,11 +103,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario2")
     private Set<MatchUsuario> matchesComoUsuario2;
 
-
-    @OneToOne(mappedBy = "usuario")
-    private Biblioteca biblioteca;
-
-
     @Builder.Default
     @OneToMany(mappedBy = "usuario")
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
