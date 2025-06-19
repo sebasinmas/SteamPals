@@ -56,11 +56,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuario/me")
-    public ResponseEntity<UsuarioDTO> getPerfilUsuario(Authentication authentication) {
+    public ResponseEntity<?> getPerfilUsuario(Authentication authentication) {
         // Obtén el usuario autenticado desde el objeto Authentication
-        String email = authentication.getName();
-        UsuarioDTO usuario = usuarioService.obtenerUsuarioPorEmail(email);
-        return ResponseEntity.ok(usuario);
+        String email = authentication.getName(); // email desde el token
+        UsuarioDTO usuarioDTO = usuarioService.obtenerUsuarioPorEmail(email);
+        return ResponseEntity.ok(usuarioDTO);
     }
-
 }

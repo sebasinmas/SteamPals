@@ -72,7 +72,7 @@ public class UsuarioService {
             throw new RuntimeException("Credenciales inválidas");
         }
 
-        String token = jwtUtil.generarToken(usuario.getEmail());
+        String token = jwtUtil.generarToken(usuario.getEmail(), usuario.getRol());
         return token;
     }
 

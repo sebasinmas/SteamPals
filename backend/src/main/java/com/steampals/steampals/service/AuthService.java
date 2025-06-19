@@ -11,10 +11,14 @@ import io.jsonwebtoken.Claims;
 
 @Service
 public class AuthService {
+    private final JwtUtil jwtUtil;
+    public AuthService(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
 
     public boolean isTokenValido(String token) {
         try {
-            Claims claims = JwtUtil.validarToken(token);
+            Claims claims = jwtUtil.validarToken(token);
             if (claims == null || claims.getSubject() == null) {
                 return false; // Token inválido o sin sujeto
             }
