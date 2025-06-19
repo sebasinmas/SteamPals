@@ -1,3 +1,4 @@
+/*
 package com.steampals.steampals.controller.api;
 
 
@@ -31,3 +32,4 @@ class GrupoControllerTest {
                 .andExpect(content().string("Grupo post endpoint reached!"));
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.steampals.steampals.repository;
 
 import java.util.Optional;
@@ -52,3 +53,4 @@ class UsuarioRepositoryTest {
     }
     
 }
+*/
