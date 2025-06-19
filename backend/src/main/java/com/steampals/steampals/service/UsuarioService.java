@@ -3,20 +3,24 @@ package com.steampals.steampals.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.steampals.steampals.config.JwtUtil;
 import com.steampals.steampals.dto.LoginDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.model.Usuario.Rol;
 import com.steampals.steampals.repository.UsuarioRepository;
 
+
 @Service
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
     }
 
     public Usuario registrarUsuario(RegistroUsuarioDTO dto) {
@@ -36,7 +40,7 @@ public class UsuarioService {
         return usuarioRepository.save(nuevoUsuario);
     }
 
-    public Usuario login(LoginDTO dto) {
+    public String login(LoginDTO dto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
 
@@ -44,6 +48,7 @@ public class UsuarioService {
             throw new RuntimeException("Credenciales inválidas");
         }
 
-        return usuario; // En el futuro podríamos devolver un token JWT o algo similar
+        String token = jwtUtil.generarToken(usuario.getEmail());
+        return token;
     }
 }

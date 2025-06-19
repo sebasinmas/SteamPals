@@ -13,7 +13,6 @@ import lombok.Setter;
  * Contiene los atributos necesarios para el registro y autenticación de un
  * usuario.
  */
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +25,4 @@ public class UsuarioDTO {
     private int edad;
     private String pais;
     private String descripcion;
-
 }
