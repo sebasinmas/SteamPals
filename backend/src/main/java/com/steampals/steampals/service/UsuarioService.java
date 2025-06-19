@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import com.steampals.steampals.config.JwtUtil;
 import com.steampals.steampals.dto.LoginDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
+import com.steampals.steampals.dto.UsuarioDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.model.Usuario.Rol;
 import com.steampals.steampals.repository.UsuarioRepository;
-
 
 @Service
 public class UsuarioService {
@@ -21,6 +21,30 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
+    }
+
+    public Usuario actualizarUsuario(RegistroUsuarioDTO dto) {
+        Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (!usuario.getEmail().equals(dto.getEmail()) && usuarioRepository.existsByEmail(dto.getEmail())) {
+            throw new RuntimeException("El email ya está en uso");
+        }
+
+        usuario.setNombreUsuario(dto.getNombreUsuario());
+        usuario.setEmail(dto.getEmail());
+        usuario.setContrasenia(passwordEncoder.encode(dto.getContrasenia()));
+        usuario.setEdad(dto.getEdad());
+        usuario.setPais(dto.getPais());
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public void eliminarUsuario(String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        usuarioRepository.delete(usuario);
     }
 
     public Usuario registrarUsuario(RegistroUsuarioDTO dto) {
@@ -50,5 +74,22 @@ public class UsuarioService {
 
         String token = jwtUtil.generarToken(usuario.getEmail());
         return token;
+    }
+
+    public UsuarioDTO obtenerUsuarioPorEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("El email no puede ser nulo o vacío");
+        }
+
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        return UsuarioDTO.builder()
+                .usuario(usuario.getNombreUsuario())
+                .email(usuario.getEmail())
+                .edad(usuario.getEdad())
+                .pais(usuario.getPais())
+                .descripcion(usuario.getDescripcion())
+                .build();
     }
 }
