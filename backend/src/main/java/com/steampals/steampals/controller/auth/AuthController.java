@@ -2,7 +2,7 @@ package com.steampals.steampals.controller.auth;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +16,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @GetMapping("/auth/validarJWT")
+    @PostMapping("/auth/validarJWT")
     public ResponseEntity<?> validarJWT(@RequestHeader("Authorization") String token) {
         if (token == null || !token.startsWith("Bearer ")) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token no proporcionado o formato incorrecto");
