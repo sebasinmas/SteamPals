@@ -39,9 +39,11 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuario")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto) {
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<?> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto, Authentication auth) {
         try {
+            System.out.println("Principal: " + auth.getPrincipal());
+            System.out.println("Authorities: " + auth.getAuthorities());
             usuarioService.eliminarUsuario(dto.getEmail());
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (RuntimeException ex) {

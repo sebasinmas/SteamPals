@@ -131,10 +131,8 @@ public class UsuarioControllerTest {
     @Test
     void actualizarUsuario_conDatosValidos_retornaOk() throws Exception {
         // Arrange
-        var registroUsuarioDTO = new com.steampals.steampals.dto.RegistroUsuarioDTO();
+        var registroUsuarioDTO = new com.steampals.steampals.dto.UsuarioUpdateDTO();
         registroUsuarioDTO.setNombreUsuario("AdminTestActualizado");
-        registroUsuarioDTO.setEmail("admin@test.com");
-        registroUsuarioDTO.setContrasenia("admin123");
         registroUsuarioDTO.setEdad(31);
         registroUsuarioDTO.setPais("Argentina");
 
@@ -151,10 +149,8 @@ public class UsuarioControllerTest {
     @Test
     void actualizarUsuario_conEmailInexistente_retornaBadRequest() throws Exception {
         // Arrange
-        var registroUsuarioDTO = new com.steampals.steampals.dto.RegistroUsuarioDTO();
+        var registroUsuarioDTO = new com.steampals.steampals.dto.UsuarioUpdateDTO();
         registroUsuarioDTO.setNombreUsuario("NoExiste");
-        registroUsuarioDTO.setEmail("noexiste@usuario.com");
-        registroUsuarioDTO.setContrasenia("algo123");
         registroUsuarioDTO.setEdad(20);
         registroUsuarioDTO.setPais("Peru");
 

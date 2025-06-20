@@ -44,7 +44,7 @@ public class WebConfig {
                         .requestMatchers(HttpMethod.POST, "/api/usuario").permitAll() // registro libre
                         .requestMatchers(HttpMethod.GET, "/api/usuario/me").authenticated()
                         .requestMatchers(HttpMethod.PUT, "/api/usuario").authenticated()
-                        .requestMatchers(HttpMethod.DELETE, "/api/usuario").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/usuario").hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

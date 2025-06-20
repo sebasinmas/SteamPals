@@ -40,12 +40,15 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
                 if (username != null && rol != null) {
                     List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + rol));
+                    System.out.println("Token válido. Usuario: " + username + " | Rol: " + rol);
+                    System.out.println("Authorities: " + authorities);
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                             username, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (Exception e) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido");
+                return; // ⬅️ Esto detiene el flujo
             }
         }
 
