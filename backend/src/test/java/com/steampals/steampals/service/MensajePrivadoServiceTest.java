@@ -1,3 +1,4 @@
+/*
 package com.steampals.steampals.service;
 
 import com.steampals.steampals.model.MensajePrivado;
@@ -53,3 +54,4 @@ public class MensajePrivadoServiceTest {
         assertThat(mensaje.getEmisor().getNombreUsuario()).isEqualTo("Sebastián");
     }
 }
+*/

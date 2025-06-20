@@ -1,5 +1,26 @@
 package com.steampals.steampals.repository;
 
-public class MatchUsuarioRepository {
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.steampals.steampals.model.MatchUsuario;
+import com.steampals.steampals.model.Usuario;
+
+@Repository
+public interface MatchUsuarioRepository extends JpaRepository<MatchUsuario, Long> {
+    @Query("SELECT m FROM MatchUsuario m WHERE " +
+           "(m.usuario1 = :u1 AND m.usuario2 = :u2) OR (m.usuario1 = :u2 AND m.usuario2 = :u1)")
+    Optional<MatchUsuario> findMatchBetween(@Param("u1") Usuario u1, @Param("u2") Usuario u2);
+
+    @Query("SELECT m.usuario1 FROM MatchUsuario m WHERE m.usuario2 = :usuario " +
+           "UNION " +
+           "SELECT m.usuario2 FROM MatchUsuario m WHERE m.usuario1 = :usuario")
+    List<Usuario> findAllMatchedUsers(@Param("usuario") Usuario usuario);
     
 }
+
