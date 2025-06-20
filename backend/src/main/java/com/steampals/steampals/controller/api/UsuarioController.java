@@ -2,6 +2,7 @@ package com.steampals.steampals.controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.steampals.steampals.dto.EliminarUsuarioDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
 import com.steampals.steampals.dto.UsuarioDTO;
+import com.steampals.steampals.dto.UsuarioUpdateDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.service.UsuarioService;
 
@@ -37,9 +40,12 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuario")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody String email) {
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<?> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto, Authentication auth) {
         try {
-            usuarioService.eliminarUsuario(email);
+            System.out.println("Principal: " + auth.getPrincipal());
+            System.out.println("Authorities: " + auth.getAuthorities());
+            usuarioService.eliminarUsuario(dto.getEmail());
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (RuntimeException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
@@ -47,10 +53,11 @@ public class UsuarioController {
     }
 
     @PutMapping("/usuario")
-    public ResponseEntity<?> actualizarUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
+    public ResponseEntity<?> actualizarUsuario(@RequestBody UsuarioUpdateDTO updateDTO, Authentication authentication) {
         try {
-            Usuario usuarioActualizado = usuarioService.actualizarUsuario(registroUsuarioDTO);
-            return ResponseEntity.ok(usuarioActualizado);
+            String email = authentication.getName(); // obtenido desde el JWT
+            Usuario usuarioActualizado = usuarioService.actualizarUsuario(email, updateDTO);
+            return ResponseEntity.ok("Usuario actualizado con ID: " + usuarioActualizado.getId());
         } catch (RuntimeException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
