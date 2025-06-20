@@ -17,7 +17,7 @@ import com.steampals.steampals.service.GrupoService;
 @RestController
 @RequestMapping("/api/grupo")
 public class GrupoController {
-        @Autowired
+    @Autowired
     GrupoService grupoService;
     @GetMapping("/grupo")
     public ArrayList<Grupo> getGrupos() {

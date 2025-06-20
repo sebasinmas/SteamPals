@@ -12,5 +12,5 @@ import com.steampals.steampals.model.Grupo;
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
     @NonNull
     Optional<Grupo> findById(Long id);
-    Optional<Grupo> findByUser(Long id);
+    Optional<Grupo> findByNombre(String nombre);
 }

@@ -36,27 +36,5 @@ public class Grupo {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> miembros = new HashSet<>();
-
-    public void agregarMiembro(Usuario u) {
-        if (!miembros.contains(u)) {
-            miembros.add(u);
-        }
-    }
-
-    public void eliminarMiembro(Usuario u) {
-        if (miembros.contains(u)) {
-            miembros.remove(u);
-        }
-    }
-
-    public void enviarMensaje(MensajeGrupal m) {
-        m.setGrupo(this);
-        mensajes.add(m);
-    }
     
-    public void autoDate(){
-        this.fechaCreacion = LocalDate.now();
-    }
-    
-
 }
