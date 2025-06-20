@@ -1,10 +1,13 @@
 package com.steampals.steampals.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -72,7 +75,8 @@ public class Usuario {
      * Rol del usuario, se utiliza para determinar los permisos del usuario en la
      * aplicación.
      */
-    private String rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     /**
      * Descripción del usuario, se utiliza para mostrar información adicional sobre
@@ -80,9 +84,18 @@ public class Usuario {
      */
     private String descripcion;
 
+    /**
+     * Lista de juegos favoritos del usuario, se utiliza para mostrar los juegos
+     * favoritos del usuario en la aplicación.
+     */
     private LocalDate fechaDeRegistro;
 
-    // Si quieres, puedes tener estas colecciones para facilitar consultas:
+    /**
+     * Indica si el usuario está suspendido, se utiliza para bloquear el acceso del
+     * usuario a la aplicación.
+     */
+    private Boolean suspendido;
+
     @OneToMany(mappedBy = "usuario1")
     private Set<MatchUsuario> matchesComoUsuario1;
 
@@ -94,14 +107,30 @@ public class Usuario {
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     @Builder.Default
     @OneToMany(mappedBy = "emisor")
-    private Set<MensajePrivado> mensajesPrivEnviados = new HashSet<>();
+    private List<MensajePrivado> mensajesPrivEnviados = new ArrayList<>();
     @Builder.Default
     @OneToMany(mappedBy = "receptor")
-    private Set<MensajePrivado> mensajesPrivRecibidos = new HashSet<>();
+    private List<MensajePrivado> mensajesPrivRecibidos = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "emisor")
-    private Set<MensajeGrupal> mensajesGrupalesEnviados = new HashSet<>();
+    private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
+    @Builder.Default
+    @OneToMany(mappedBy = "reportado")
+    private List<Reporte> reportesRecibidos = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "reportador")
+    private List<Reporte> reportesRealizados = new ArrayList<>();
 
+
+
+    /**
+     * Enumeración que representa los roles posibles de un usuario en la aplicación.
+     * USUARIO: Rol por defecto, con permisos básicos.
+     * ADMINISTRADOR: Rol con permisos avanzados para gestionar la aplicación.
+     */
+    public enum Rol {
+        USUARIO, ADMINISTRADOR
+    }
 }

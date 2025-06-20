@@ -7,10 +7,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import com.steampals.steampals.model.Usuario;
-@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    boolean existsByEmail(@NonNull String email);
+    Optional<Usuario> findByEmail(@NonNull String email);
     Optional<Usuario> findByNombreUsuario(String usuario);
-    Optional<Usuario> findByEmail(String email);
-    @NonNull
-    Optional<Usuario> findById(@NonNull Long id);
 }
+
