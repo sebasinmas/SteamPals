@@ -2,6 +2,7 @@ package com.steampals.steampals.controller.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.steampals.steampals.dto.EliminarUsuarioDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
 import com.steampals.steampals.dto.UsuarioDTO;
 import com.steampals.steampals.model.Usuario;
@@ -36,9 +38,10 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/usuario")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody String email) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto) {
         try {
-            usuarioService.eliminarUsuario(email);
+            usuarioService.eliminarUsuario(dto.getEmail());
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (RuntimeException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
