@@ -92,4 +92,20 @@ public class UsuarioService {
                 .descripcion(usuario.getDescripcion())
                 .build();
     }
+
+    //CASO DE USO VISUALIZAR OTRO USUARIO
+    public UsuarioDTO obtenerPerfilPublico(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setUsuario(usuario.getNombreUsuario());
+        dto.setEmail(usuario.getEmail());
+        dto.setEdad(usuario.getEdad());
+        dto.setPais(usuario.getPais());
+        dto.setDescripcion(usuario.getDescripcion());
+
+        return dto;
+    }
+    
 }

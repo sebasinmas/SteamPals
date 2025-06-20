@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,5 +62,14 @@ public class UsuarioController {
         String email = authentication.getName(); // email desde el token
         UsuarioDTO usuarioDTO = usuarioService.obtenerUsuarioPorEmail(email);
         return ResponseEntity.ok(usuarioDTO);
+    }
+    @GetMapping("/{id}/perfil-publico")
+    public ResponseEntity<UsuarioDTO> verPerfilPublico(@PathVariable Long id) {
+        try {
+            UsuarioDTO dto = usuarioService.obtenerPerfilPublico(id);
+            return ResponseEntity.ok(dto);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
