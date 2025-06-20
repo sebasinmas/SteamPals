@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.steampals.steampals.dto.EliminarUsuarioDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
 import com.steampals.steampals.dto.UsuarioDTO;
+import com.steampals.steampals.dto.UsuarioUpdateDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.service.UsuarioService;
 
@@ -49,10 +50,11 @@ public class UsuarioController {
     }
 
     @PutMapping("/usuario")
-    public ResponseEntity<?> actualizarUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
+    public ResponseEntity<?> actualizarUsuario(@RequestBody UsuarioUpdateDTO updateDTO, Authentication authentication) {
         try {
-            Usuario usuarioActualizado = usuarioService.actualizarUsuario(registroUsuarioDTO);
-            return ResponseEntity.ok(usuarioActualizado);
+            String email = authentication.getName(); // obtenido desde el JWT
+            Usuario usuarioActualizado = usuarioService.actualizarUsuario(email, updateDTO);
+            return ResponseEntity.ok("Usuario actualizado con ID: " + usuarioActualizado.getId());
         } catch (RuntimeException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }

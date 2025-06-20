@@ -7,6 +7,7 @@ import com.steampals.steampals.config.JwtUtil;
 import com.steampals.steampals.dto.LoginDTO;
 import com.steampals.steampals.dto.RegistroUsuarioDTO;
 import com.steampals.steampals.dto.UsuarioDTO;
+import com.steampals.steampals.dto.UsuarioUpdateDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.model.Usuario.Rol;
 import com.steampals.steampals.repository.UsuarioRepository;
@@ -23,17 +24,12 @@ public class UsuarioService {
         this.jwtUtil = jwtUtil;
     }
 
-    public Usuario actualizarUsuario(RegistroUsuarioDTO dto) {
-        Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
+    public Usuario actualizarUsuario(String email, UsuarioUpdateDTO dto) {
+        Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        if (!usuario.getEmail().equals(dto.getEmail()) && usuarioRepository.existsByEmail(dto.getEmail())) {
-            throw new RuntimeException("El email ya está en uso");
-        }
-
         usuario.setNombreUsuario(dto.getNombreUsuario());
-        usuario.setEmail(dto.getEmail());
-        usuario.setContrasenia(passwordEncoder.encode(dto.getContrasenia()));
+        usuario.setDescripcion(dto.getDescripcion());
         usuario.setEdad(dto.getEdad());
         usuario.setPais(dto.getPais());
 
