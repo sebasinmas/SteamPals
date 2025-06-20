@@ -16,7 +16,7 @@ public class MensajePrivadoController {
     private MensajePrivadoService mensajeService;
 
     @PostMapping("/enviar")
-    public MensajePrivado enviar(@RequestParam Long emisorId, @RequestParam Long receptorId,  @RequestParam String mensaje) {
+    public MensajePrivado enviar(@RequestParam Long emisorId,@RequestParam Long receptorId,@RequestParam String mensaje) {
         return mensajeService.enviarMensajePorId(emisorId, receptorId, mensaje);
     }
 }

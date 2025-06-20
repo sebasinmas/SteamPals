@@ -1,4 +1,3 @@
-/*
 package com.steampals.steampals;
 
 
@@ -19,4 +18,4 @@ class SteampalsApplicationTests {
 
 	}
 }
-*/
+

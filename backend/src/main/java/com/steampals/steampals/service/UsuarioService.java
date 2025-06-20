@@ -100,7 +100,7 @@ public class UsuarioService {
 
         UsuarioDTO dto = new UsuarioDTO();
         dto.setUsuario(usuario.getNombreUsuario());
-        dto.setEmail(usuario.getEmail()); // si es permitido mostrar
+        dto.setEmail(usuario.getEmail());
         dto.setEdad(usuario.getEdad());
         dto.setPais(usuario.getPais());
         dto.setDescripcion(usuario.getDescripcion());

@@ -1,4 +1,3 @@
-/*
 package com.steampals.steampals.repository;
 
 import java.util.Optional;
@@ -74,4 +73,4 @@ public class GrupoRepositoryTest {
         assertTrue(resultado.get().getMensajes().contains(mensajeGrupo));
     }
 
-}*/
+}

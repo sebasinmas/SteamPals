@@ -1,5 +1,12 @@
-/*
 package com.steampals.steampals.service;
+
+import java.time.LocalDateTime;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.steampals.steampals.model.MensajePrivado;
 import com.steampals.steampals.model.Usuario;
@@ -7,16 +14,6 @@ import com.steampals.steampals.repository.MensajePrivadoRepository;
 import com.steampals.steampals.repository.UsuarioRepository;
 
 import jakarta.transaction.Transactional;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-
-import java.time.LocalDateTime;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @SpringBootTest
@@ -54,4 +51,3 @@ public class MensajePrivadoServiceTest {
         assertThat(mensaje.getEmisor().getNombreUsuario()).isEqualTo("Sebastián");
     }
 }
-*/
