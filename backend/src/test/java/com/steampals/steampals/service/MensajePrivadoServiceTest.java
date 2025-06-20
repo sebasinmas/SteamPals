@@ -28,7 +28,6 @@ public class MensajePrivadoServiceTest {
 
     @Test
     void testEnviarMensaje() {
-        // Crear usuarios emisor y receptor
         Usuario emisor = new Usuario();
         emisor.setNombreUsuario("Sebastián");
         emisor = usuarioRepo.save(emisor);
@@ -37,7 +36,6 @@ public class MensajePrivadoServiceTest {
         receptor.setNombreUsuario("Julio");
         receptor = usuarioRepo.save(receptor);
 
-        // Crear mensaje
         MensajePrivado mensaje = new MensajePrivado();
         mensaje.setMensaje("Hola Julio");
         mensaje.setFechaEnvio(LocalDateTime.now());
@@ -45,8 +43,7 @@ public class MensajePrivadoServiceTest {
         mensaje.setReceptor(receptor);
 
         mensaje = mensajeRepo.save(mensaje);
-
-        // Verificar
+        
         assertThat(mensaje.getId()).isNotNull();
         assertThat(mensaje.getEmisor().getNombreUsuario()).isEqualTo("Sebastián");
     }
