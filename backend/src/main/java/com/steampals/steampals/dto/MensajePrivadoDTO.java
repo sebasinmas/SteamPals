@@ -27,7 +27,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class MensajePrivadoDTO {
-private Long id;
+    private Long id;
     /**
      * Contenido del mensaje privado.
      */
