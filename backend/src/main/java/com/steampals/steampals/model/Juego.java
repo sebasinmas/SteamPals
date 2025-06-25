@@ -23,6 +23,8 @@ public class Juego {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    private Long appId;
     private String nombre;
 
     @OneToMany(mappedBy = "juego")

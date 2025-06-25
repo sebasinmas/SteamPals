@@ -47,6 +47,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * ID de Steam del usuario, utilizado para vincular la cuenta de Steam
+     */
+
+    private String steamId;
+
     /**
      * Nombre de usuario del usuario, es un nickname no único
      */
