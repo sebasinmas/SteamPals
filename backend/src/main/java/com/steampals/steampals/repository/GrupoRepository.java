@@ -11,5 +11,5 @@ import lombok.NonNull;
 public interface GrupoRepository extends JpaRepository<Grupo, Long> {
     @NonNull
     Optional<Grupo> findById(@NonNull Long id);
-    Optional<Grupo> findByUser(Long id);
+    Optional<Grupo> findByNombre(String nombre);
 }

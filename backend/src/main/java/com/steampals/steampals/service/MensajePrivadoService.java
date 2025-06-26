@@ -3,12 +3,14 @@ package com.steampals.steampals.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.steampals.steampals.model.MensajePrivado;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.repository.MensajePrivadoRepository;
 import com.steampals.steampals.repository.UsuarioRepository;
 
+@Service
 public class MensajePrivadoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
