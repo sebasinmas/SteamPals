@@ -6,13 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -120,7 +114,7 @@ public class Usuario {
     private List<MensajePrivado> mensajesPrivRecibidos = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "emisor")
+    @OneToMany(mappedBy = "emisor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
     @Builder.Default

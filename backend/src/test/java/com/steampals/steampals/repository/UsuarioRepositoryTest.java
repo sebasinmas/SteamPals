@@ -14,16 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.steampals.steampals.model.Usuario;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ActiveProfiles("test")
 class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @BeforeEach // este método se ejecuta antes de cada prueba
     public void setup() {
-         // Limpia base por si acaso
         usuarioRepository.deleteAll();
 
         // Crea un usuario de prueba
@@ -32,7 +33,6 @@ class UsuarioRepositoryTest {
         usuario.setEmail("kevin@email.com");
 
         usuarioRepository.save(usuario);
-
     }
     @Test
     @Order(1)
