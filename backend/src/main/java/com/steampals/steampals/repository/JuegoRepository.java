@@ -1,6 +1,5 @@
 package com.steampals.steampals.repository;
 
-import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
