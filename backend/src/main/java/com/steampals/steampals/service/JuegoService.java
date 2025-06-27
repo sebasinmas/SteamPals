@@ -1,5 +1,6 @@
 package com.steampals.steampals.service;
 
+<<<<<<< HEAD
 
 import com.steampals.steampals.model.Juego;
 import com.steampals.steampals.repository.JuegoRepository;
@@ -7,6 +8,11 @@ import org.springframework.web.client.RestTemplate;
 
 
 
+=======
+import org.springframework.stereotype.Service;
+
+@Service
+>>>>>>> ftr_luck
 public class JuegoService {
     private final JuegoRepository juegoRepository;
     private final RestTemplate restTemplate;
