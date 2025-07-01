@@ -34,6 +34,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Builder
+@Table(name = "usuario")
 public class Usuario {
     /**
      * ID único del usuario, generado automáticamente por la base de datos.
