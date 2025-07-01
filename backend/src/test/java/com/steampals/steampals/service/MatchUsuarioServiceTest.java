@@ -23,7 +23,7 @@ import com.steampals.steampals.repository.MatchUsuarioRepository;
 import com.steampals.steampals.repository.UsuarioRepository;
 
 @ExtendWith(MockitoExtension.class)
-class MatchServiceTest {
+class MatchUsuarioServiceTest {
 
     @Mock
     private MatchUsuarioRepository matchUsuarioRepository;
@@ -58,36 +58,39 @@ class MatchServiceTest {
     }
 
     @Test
-    void darLike_matchExisteYSeCompleta() {
+    void darLike_matchExiste_seCompletaCorrectamente() {
         Usuario actual = new Usuario();
         actual.setId(1L);
         Usuario objetivo = new Usuario();
         objetivo.setId(2L);
 
-        MatchUsuario match = new MatchUsuario();
-        match.setUsuario1(actual);
-        match.setUsuario2(objetivo);
-        match.setUsuario1Like(false);
-        match.setUsuario2Like(true);
+        MatchUsuario matchExistente = new MatchUsuario();
+        matchExistente.setUsuario1(objetivo);
+        matchExistente.setUsuario2(actual);
+        matchExistente.setUsuario1Like(true); // el objetivo ya dio like
+        matchExistente.setUsuario2Like(false);
 
-        when(matchUsuarioRepository.findMatchBetween(actual, objetivo)).thenReturn(Optional.of(match));
+        when(matchUsuarioRepository.findMatchEntreUsuarios(actual, objetivo))
+                .thenReturn(Optional.of(matchExistente));
 
         matchService.darLike(actual, objetivo);
 
-        assertTrue(match.isUsuario1Like());
-        assertTrue(match.isUsuario2Like());
-        assertTrue(match.isCompleto());
-        verify(matchUsuarioRepository).save(match);
+        assertTrue(matchExistente.isUsuario1Like());
+        assertTrue(matchExistente.isUsuario2Like());
+        assertTrue(matchExistente.isCompleto());
+
+        verify(matchUsuarioRepository).save(matchExistente);
     }
 
     @Test
-    void darLike_noExisteMatch_prepararNuevo() {
+    void darLike_noExisteMatch_seCreaNuevo() {
         Usuario actual = new Usuario();
         actual.setId(1L);
         Usuario objetivo = new Usuario();
         objetivo.setId(2L);
 
-        when(matchUsuarioRepository.findMatchBetween(actual, objetivo)).thenReturn(Optional.empty());
+        when(matchUsuarioRepository.findMatchEntreUsuarios(actual, objetivo))
+                .thenReturn(Optional.empty());
 
         matchService.darLike(actual, objetivo);
 
@@ -102,4 +105,3 @@ class MatchServiceTest {
         assertFalse(nuevo.isCompleto());
     }
 }
-
