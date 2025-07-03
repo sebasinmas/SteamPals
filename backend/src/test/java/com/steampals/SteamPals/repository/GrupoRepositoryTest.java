@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class GrupoRepositoryTest {
+class GrupoRepositoryTest {
     @Autowired
     private GrupoRepository grupoRepository;
     @Autowired
@@ -22,7 +22,7 @@ public class GrupoRepositoryTest {
     @Autowired
     private MensajeGrupalRepository mensajeGrupalRepository;
     @BeforeEach // este método se ejecuta antes de cada prueba
-    public void setup() {
+    void setup() {
         // Limpia base por si acaso
         grupoRepository.deleteAll();
         usuarioRepository.deleteAll();
