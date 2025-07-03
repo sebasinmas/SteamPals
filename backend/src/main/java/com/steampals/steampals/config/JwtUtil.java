@@ -14,10 +14,8 @@ import java.util.Date;
 
 @Component
 public class JwtUtil {
-    // Usa una clave secreta HS256 segura y suficientemente larga
-    private static final String SECRET = "c2VjcmV0S2V5U2VjcmV0S2V5U2VjcmV0S2V5U2VjcmV0S2V5"; // Reemplaza con tu clave secreta
     // Asegúrate de que la clave sea de al menos 256 bits (32 bytes) para HS256
-    private static final SecretKey KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET));
+    private static final SecretKey KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(System.getenv("JWT_SECRET")));
 
     public String generarToken(String email, Rol rol) {
         return Jwts.builder()
