@@ -39,15 +39,20 @@ class MatchUsuarioServiceTest {
         Usuario actual = new Usuario();
         actual.setId(1L);
 
-        Usuario visto = new Usuario();
-        visto.setId(2L);
+        Usuario visto1 = new Usuario();
+        visto1.setId(2L);
+
+        Usuario visto2 = new Usuario();
+        visto2.setId(5L);
 
         Usuario nuevo1 = new Usuario();
         nuevo1.setId(3L);
         Usuario nuevo2 = new Usuario();
         nuevo2.setId(4L);
 
-        when(matchUsuarioRepository.findAllMatchedUsers(actual)).thenReturn(List.of(visto));
+        // Simula matches donde actual es usuario1 y usuario2
+        when(matchUsuarioRepository.findUsuariosDondeEsUsuario1(actual)).thenReturn(List.of(visto1));
+        when(matchUsuarioRepository.findUsuariosDondeEsUsuario2(actual)).thenReturn(List.of(visto2));
         when(usuarioRepository.findByIdNotIn(org.mockito.ArgumentMatchers.anyList()))
                 .thenReturn(List.of(nuevo1, nuevo2));
 

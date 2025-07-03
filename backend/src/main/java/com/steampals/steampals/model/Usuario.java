@@ -122,10 +122,10 @@ public class Usuario {
     private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
     @Builder.Default
-    @OneToMany(mappedBy = "reportado")
+    @OneToMany(mappedBy = "reportado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reporte> reportesRecibidos = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "reportador")
+    @OneToMany(mappedBy = "reportador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reporte> reportesRealizados = new ArrayList<>();
 
 
