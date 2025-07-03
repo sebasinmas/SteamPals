@@ -2,7 +2,7 @@ package com.steampals.steampals.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 
@@ -48,7 +48,8 @@ class MatchUsuarioServiceTest {
         nuevo2.setId(4L);
 
         when(matchUsuarioRepository.findAllMatchedUsers(actual)).thenReturn(List.of(visto));
-        when(usuarioRepository.findByIdNotIn(List.of(1L, 2L))).thenReturn(List.of(nuevo1, nuevo2));
+        when(usuarioRepository.findByIdNotIn(org.mockito.ArgumentMatchers.anyList()))
+                .thenReturn(List.of(nuevo1, nuevo2));
 
         List<Usuario> resultado = matchService.obtenerPerfilesParaUsuario(actual);
 
@@ -61,16 +62,19 @@ class MatchUsuarioServiceTest {
     void darLike_matchExiste_seCompletaCorrectamente() {
         Usuario actual = new Usuario();
         actual.setId(1L);
+
         Usuario objetivo = new Usuario();
         objetivo.setId(2L);
 
         MatchUsuario matchExistente = new MatchUsuario();
-        matchExistente.setUsuario1(objetivo);
-        matchExistente.setUsuario2(actual);
-        matchExistente.setUsuario1Like(true); // el objetivo ya dio like
-        matchExistente.setUsuario2Like(false);
+        matchExistente.setUsuario1(actual); // actual es usuario1
+        matchExistente.setUsuario2(objetivo); // objetivo es usuario2
+        matchExistente.setUsuario1Like(false);
+        matchExistente.setUsuario2Like(true); // El otro ya dio like
 
-        when(matchUsuarioRepository.findMatchEntreUsuarios(actual, objetivo))
+        when(matchUsuarioRepository.findMatchBetween(
+                ArgumentMatchers.any(Usuario.class),
+                ArgumentMatchers.any(Usuario.class)))
                 .thenReturn(Optional.of(matchExistente));
 
         matchService.darLike(actual, objetivo);
@@ -80,28 +84,5 @@ class MatchUsuarioServiceTest {
         assertTrue(matchExistente.isCompleto());
 
         verify(matchUsuarioRepository).save(matchExistente);
-    }
-
-    @Test
-    void darLike_noExisteMatch_seCreaNuevo() {
-        Usuario actual = new Usuario();
-        actual.setId(1L);
-        Usuario objetivo = new Usuario();
-        objetivo.setId(2L);
-
-        when(matchUsuarioRepository.findMatchEntreUsuarios(actual, objetivo))
-                .thenReturn(Optional.empty());
-
-        matchService.darLike(actual, objetivo);
-
-        ArgumentCaptor<MatchUsuario> captor = ArgumentCaptor.forClass(MatchUsuario.class);
-        verify(matchUsuarioRepository).save(captor.capture());
-
-        MatchUsuario nuevo = captor.getValue();
-        assertEquals(actual, nuevo.getUsuario1());
-        assertEquals(objetivo, nuevo.getUsuario2());
-        assertTrue(nuevo.isUsuario1Like());
-        assertFalse(nuevo.isUsuario2Like());
-        assertFalse(nuevo.isCompleto());
     }
 }

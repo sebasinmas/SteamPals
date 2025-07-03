@@ -9,6 +9,7 @@ import java.util.Set;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,12 +36,14 @@ import lombok.Setter;
 @Entity
 @Builder
 @Table(name = "usuario")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario {
     /**
      * ID único del usuario, generado automáticamente por la base de datos.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     /**
