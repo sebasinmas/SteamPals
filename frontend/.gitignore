@@ -1,0 +1,22 @@
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de build (Vite)
+dist/
+
+# Archivos de lock (si usas solo uno, está bien incluir el otro)
+# npm
+package-lock.json
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos del editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Entornos
+.env
+.env.*
