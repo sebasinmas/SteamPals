@@ -1,14 +1,5 @@
 package com.steampals.steampals.service;
 
-/* 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +7,14 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.steampals.steampals.model.MatchUsuario;
 import com.steampals.steampals.model.Usuario;
@@ -103,4 +101,3 @@ class MatchServiceTest {
         assertFalse(nuevo.isCompleto());
     }
 }
-*/
