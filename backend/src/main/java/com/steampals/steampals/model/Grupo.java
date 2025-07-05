@@ -24,9 +24,9 @@ public class Grupo {
     private String descripcion;
 
     @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MensajeGrupal> mensajes;
+    private List<MensajeGrupal> mensajes = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Usuario> miembros = new HashSet<>();
     
 }

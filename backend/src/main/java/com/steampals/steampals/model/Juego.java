@@ -29,7 +29,7 @@ public class Juego {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "juego")
+    @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     
     /**

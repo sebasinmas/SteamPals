@@ -101,31 +101,31 @@ public class Usuario {
      */
     private Boolean suspendido;
 
-    @OneToMany(mappedBy = "usuario1")
+    @OneToMany(mappedBy = "usuario1", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<MatchUsuario> matchesComoUsuario1;
 
-    @OneToMany(mappedBy = "usuario2")
+    @OneToMany(mappedBy = "usuario2", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<MatchUsuario> matchesComoUsuario2;
 
     @Builder.Default
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     @Builder.Default
-    @OneToMany(mappedBy = "emisor")
+    @OneToMany(mappedBy = "emisor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajePrivado> mensajesPrivEnviados = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "receptor")
+    @OneToMany(mappedBy = "receptor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajePrivado> mensajesPrivRecibidos = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "emisor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "emisor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
     @Builder.Default
-    @OneToMany(mappedBy = "reportado", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "reportado", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Reporte> reportesRecibidos = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "reportador", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "reportador", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Reporte> reportesRealizados = new ArrayList<>();
 
 
