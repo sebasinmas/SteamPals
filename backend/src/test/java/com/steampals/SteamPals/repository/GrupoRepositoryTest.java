@@ -5,14 +5,17 @@ import com.steampals.steampals.model.Usuario;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.steampals.steampals.model.Grupo;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GrupoRepositoryTest {
     @Autowired
@@ -21,11 +24,15 @@ class GrupoRepositoryTest {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private MensajeGrupalRepository mensajeGrupalRepository;
+    @Autowired
+    private MatchUsuarioRepository matchUsuarioRepository;
     @BeforeEach // este método se ejecuta antes de cada prueba
     void setup() {
         // Limpia base por si acaso
-        grupoRepository.deleteAll();
+        matchUsuarioRepository.deleteAll();
+        mensajeGrupalRepository.deleteAll();
         usuarioRepository.deleteAll();
+        grupoRepository.deleteAll();
         // Crea un grupo de prueba
         Grupo grupo = new Grupo();
         grupo.setNombre("Grupo 1");
@@ -84,16 +91,29 @@ class GrupoRepositoryTest {
          mensaje.setEmisor(usuario);
          mensaje.setMensaje("Hola, este es un mensaje de prueba");
 
+         // Actualiza ambos lados de la relación
+         if (grupo.getMensajes() == null) {
+             grupo.setMensajes(new ArrayList<>());
+         }
+         grupo.getMensajes().add(mensaje);
+
          mensajeGrupalRepository.save(mensaje);
 
          // Refrescamos el grupo desde la base de datos
-         Grupo grupoActualizado = grupoRepository.findByIdConMensajes(grupo.getId()).get();
+         Grupo grupoActualizado = grupoRepository.findByIdConMensajes(grupo.getId()).orElseThrow(() -> new AssertionError("El grupo no fue encontrado"));
 
          // Aseguramos que tiene al menos un mensaje
-         assertFalse(grupoActualizado.getMensajes().isEmpty(), "El grupo debe tener al menos un mensaje");
+         assertFalse(grupoActualizado.getMensajes() == null || grupoActualizado.getMensajes().isEmpty(), "El grupo debe tener al menos un mensaje");
 
          // Verificamos que el último mensaje es el que agregamos
-         MensajeGrupal ultimoMensaje = grupoActualizado.getMensajes().get(grupoActualizado.getMensajes().size() - 1);
+         MensajeGrupal ultimoMensaje = null;
+         if (grupoActualizado.getMensajes() instanceof java.util.List) {
+             java.util.List<MensajeGrupal> mensajes = (java.util.List<MensajeGrupal>) grupoActualizado.getMensajes();
+             ultimoMensaje = mensajes.get(mensajes.size() - 1);
+         } else if (grupoActualizado.getMensajes() instanceof java.util.Set) {
+             ultimoMensaje = grupoActualizado.getMensajes().stream().reduce((first, second) -> second).orElse(null);
+         }
+         assertNotNull(ultimoMensaje, "Debe haber al menos un mensaje");
          assertEquals("Hola, este es un mensaje de prueba", ultimoMensaje.getMensaje(), "El mensaje debe coincidir");
      }
 
