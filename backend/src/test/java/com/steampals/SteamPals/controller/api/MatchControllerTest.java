@@ -82,7 +82,7 @@ class MatchControllerTest {
         String jwt = "Bearer " + jwtUtil.generarToken(usuario.getEmail(), usuario.getRol());
         mockMvc.perform(get("/api/match/sugerencias/1")
                         .header("Authorization", jwt))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -111,7 +111,7 @@ class MatchControllerTest {
                         .param("objetivoId", "2")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .header("Authorization", jwt))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -124,6 +124,6 @@ class MatchControllerTest {
                         .param("objetivoId", "2")
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .header("Authorization", jwt))
-                .andExpect(status().isInternalServerError());
+                .andExpect(status().isNotFound());
     }
 }
