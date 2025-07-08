@@ -1,7 +1,5 @@
 package com.steampals.steampals.repository;
 
-<<<<<<< HEAD
-=======
 
 import java.util.Optional;
 
@@ -16,19 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.steampals.steampals.model.Grupo;
->>>>>>> origin/ftr_luck
 import com.steampals.steampals.model.MensajeGrupal;
 import com.steampals.steampals.model.Usuario;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.steampals.steampals.model.Grupo;
-
 import java.util.ArrayList;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -133,9 +123,4 @@ class GrupoRepositoryTest {
          assertNotNull(ultimoMensaje, "Debe haber al menos un mensaje");
          assertEquals("Hola, este es un mensaje de prueba", ultimoMensaje.getMensaje(), "El mensaje debe coincidir");
      }
-
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/ftr_luck
