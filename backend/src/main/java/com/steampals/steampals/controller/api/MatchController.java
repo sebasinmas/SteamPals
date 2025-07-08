@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.steampals.steampals.dto.UsuarioDTO;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.repository.UsuarioRepository;
 import com.steampals.steampals.service.MatchService;
