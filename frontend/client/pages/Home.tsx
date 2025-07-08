@@ -28,7 +28,6 @@ interface GamerProfile {
   bio: string;
   favoriteGames: string[];
   playStyle: string[];
-  onlineStatus: "online" | "away" | "offline";
   level: number;
   achievements: number;
   hoursPlayed: string;
@@ -44,7 +43,6 @@ const SAMPLE_PROFILES: GamerProfile[] = [
     bio: "Jugador competitivo de FPS y RPG. Busco squad para ranked!",
     favoriteGames: ["CS2", "Valorant", "Elden Ring"],
     playStyle: ["Competitivo", "Estratégico", "Team Player"],
-    onlineStatus: "online",
     level: 87,
     achievements: 342,
     hoursPlayed: "2,450h",
@@ -58,7 +56,6 @@ const SAMPLE_PROFILES: GamerProfile[] = [
     bio: "MMO addict y streamer ocasional. Siempre lista para una aventura épica!",
     favoriteGames: ["FF XIV", "WoW", "Genshin Impact"],
     playStyle: ["Cooperativo", "PvE", "Casual"],
-    onlineStatus: "online",
     level: 95,
     achievements: 578,
     hoursPlayed: "3,120h",
@@ -72,7 +69,6 @@ const SAMPLE_PROFILES: GamerProfile[] = [
     bio: "Pro player retirado. Ahora juego por diversión y ayudo a nuevos jugadores!",
     favoriteGames: ["League of Legends", "Rocket League", "Apex"],
     playStyle: ["Mentor", "Competitivo", "Estratégico"],
-    onlineStatus: "away",
     level: 120,
     achievements: 892,
     hoursPlayed: "5,670h",
@@ -86,7 +82,6 @@ const SAMPLE_PROFILES: GamerProfile[] = [
     bio: "Speedrunner y coleccionista de logros. ¿Quién se apunta a completar juegos al 100%?",
     favoriteGames: ["Hollow Knight", "Celeste", "Dark Souls"],
     playStyle: ["Speedrun", "Completionist", "Hardcore"],
-    onlineStatus: "online",
     level: 78,
     achievements: 1205,
     hoursPlayed: "1,890h",
@@ -323,11 +318,6 @@ export default function Home() {
                             <span className="text-lg">{pal.avatar}</span>
                             <div className="text-left">
                               <div className="font-medium">{pal.name}</div>
-                              <div className="text-xs text-muted-foreground">
-                                {pal.onlineStatus === "online"
-                                  ? "🟢 En línea"
-                                  : "⚪ Desconectado"}
-                              </div>
                             </div>
                           </div>
                         </Button>
@@ -762,33 +752,6 @@ function SwipeCard({
           <div className="h-2/3 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 relative flex items-center justify-center">
             <div className="text-8xl">{profile.avatar}</div>
 
-            {/* Online Status */}
-            <div className="absolute top-4 left-4">
-              <div
-                className={`flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-medium ${
-                  profile.onlineStatus === "online"
-                    ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                    : profile.onlineStatus === "away"
-                      ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                      : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
-                }`}
-              >
-                <div
-                  className={`w-2 h-2 rounded-full ${
-                    profile.onlineStatus === "online"
-                      ? "bg-green-400"
-                      : profile.onlineStatus === "away"
-                        ? "bg-yellow-400"
-                        : "bg-gray-400"
-                  }`}
-                />
-                {profile.onlineStatus === "online"
-                  ? "En línea"
-                  : profile.onlineStatus === "away"
-                    ? "Ausente"
-                    : "Desconectado"}
-              </div>
-            </div>
 
             {/* Level Badge */}
             <div className="absolute top-4 right-4 bg-accent/20 border border-accent/30 rounded-full px-3 py-1">

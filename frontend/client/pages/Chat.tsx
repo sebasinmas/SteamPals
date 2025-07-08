@@ -40,7 +40,6 @@ interface ChatRoom {
   lastMessage: string;
   lastMessageTime: string;
   unreadCount: number;
-  isOnline: boolean;
 }
 
 const initialMessages: { [chatId: string]: Message[] } = {};
@@ -187,13 +186,6 @@ export default function Chat() {
                         {chat.avatar}
                       </div>
                     )}
-                    {!chat.isGroup && (
-                      <div
-                        className={`absolute bottom-0 right-0 w-4 h-4 rounded-full border-2 border-background ${
-                          chat.isOnline ? "bg-green-400" : "bg-gray-400"
-                        }`}
-                      ></div>
-                    )}
                   </div>
 
                   <div className="flex-1 min-w-0">
@@ -242,15 +234,6 @@ export default function Chat() {
                           {currentChat.avatar}
                         </div>
                       )}
-                      {!currentChat.isGroup && (
-                        <div
-                          className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-background ${
-                            currentChat.isOnline
-                              ? "bg-green-400"
-                              : "bg-gray-400"
-                          }`}
-                        ></div>
-                      )}
                     </div>
                     <div>
                       <button
@@ -268,13 +251,6 @@ export default function Chat() {
                       >
                         {currentChat.name}
                       </button>
-                      <p className="text-sm text-muted-foreground">
-                        {currentChat.isGroup
-                          ? `${currentChat.participants.length} participantes`
-                          : currentChat.isOnline
-                            ? "En línea"
-                            : "Desconectado"}
-                      </p>
                     </div>
                   </div>
 
