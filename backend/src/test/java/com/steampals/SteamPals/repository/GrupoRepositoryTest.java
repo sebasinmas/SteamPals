@@ -1,5 +1,22 @@
 package com.steampals.steampals.repository;
 
+<<<<<<< HEAD
+=======
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.steampals.steampals.model.Grupo;
+>>>>>>> origin/ftr_luck
 import com.steampals.steampals.model.MensajeGrupal;
 import com.steampals.steampals.model.Usuario;
 import org.junit.jupiter.api.*;
@@ -118,3 +135,7 @@ class GrupoRepositoryTest {
      }
 
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/ftr_luck

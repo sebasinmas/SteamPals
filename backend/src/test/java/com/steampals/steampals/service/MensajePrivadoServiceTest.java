@@ -1,6 +1,6 @@
 package com.steampals.steampals.service;
 
-/*import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
@@ -47,4 +47,4 @@ public class MensajePrivadoServiceTest {
         assertThat(mensaje.getId()).isNotNull();
         assertThat(mensaje.getEmisor().getNombreUsuario()).isEqualTo("Sebastián");
     }
-}*/
+}
