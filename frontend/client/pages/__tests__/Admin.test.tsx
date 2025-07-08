@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Admin from "../Admin";
+import '@testing-library/jest-dom';
 
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {

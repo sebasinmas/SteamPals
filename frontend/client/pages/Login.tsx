@@ -121,15 +121,6 @@ export default function Login() {
                   Regístrate aquí
                 </Link>
               </div>
-
-              <div className="mt-4 text-center">
-                <Button
-                  variant="ghost"
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  ¿Olvidaste tu contraseña?
-                </Button>
-              </div>
             </CardContent>
           </Card>
         </div>
