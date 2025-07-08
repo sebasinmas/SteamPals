@@ -1,8 +1,9 @@
 package com.steampals.steampals.controller.api;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,18 +18,23 @@ import com.steampals.steampals.service.GrupoService;
 @RestController
 @RequestMapping("/api/grupo")
 public class GrupoController {
-    @Autowired
-    GrupoService grupoService;
+    private final GrupoService grupoService;
+
+    public GrupoController(GrupoService grupoService) {
+        this.grupoService = grupoService;
+    }
+
     @GetMapping("/grupo")
-    public ArrayList<Grupo> getGrupos() {
-        return grupoService.obtenerGrupos();
+    public ResponseEntity<List<Grupo>> getGrupos() {
+
+        return ResponseEntity.ok(grupoService.obtenerGrupos());
     }
     @PutMapping("/grupo")
-    public String putGrupo() {
-        return "Grupo put endpoint reached!";
+    public ResponseEntity<String> putGrupo() {
+        return ResponseEntity.ok("Grupo put endpoint reached!");
     }
     @PostMapping("/grupo")
-    public Grupo guardaGrupo(@RequestBody Grupo grupo){
-        return this.grupoService.guardarGrupo(grupo);
+    public ResponseEntity<Grupo> guardaGrupo(@RequestBody Grupo grupo){
+        return ResponseEntity.ok(this.grupoService.guardarGrupo(grupo));
     }
 }
