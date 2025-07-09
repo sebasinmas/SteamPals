@@ -4,21 +4,27 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @Configuration
+@EnableMethodSecurity // Habilita la seguridad a nivel de métodos (anotaciones como @PreAuthorize)
 @EnableWebSecurity // Habilita la configuración de seguridad web
 public class WebConfig {
     JwtAuthFilter jwtAuthFilter;
+
+    String usuarioRoute = "/api/usuario";
 
     public WebConfig(JwtAuthFilter jwtAuthFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
@@ -36,15 +42,13 @@ public class WebConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/", 
-                                "/index.html",
-                                "/assets/**")
-                        .permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/usuario/**").authenticated()
-                        .anyRequest().denyAll());
-
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, usuarioRoute).permitAll() // registro libre
+                        .requestMatchers(HttpMethod.GET, usuarioRoute + "/me").authenticated()
+                        .requestMatchers(HttpMethod.PUT, usuarioRoute).authenticated()
+                        .requestMatchers(HttpMethod.DELETE, usuarioRoute).hasRole("ADMINISTRADOR")
+                        .anyRequest().authenticated())
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
