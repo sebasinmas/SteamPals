@@ -522,5 +522,5 @@ Para dudas sobre el frontend o contribuciones:
 
 ---
 
-_Última actualización: Enero 2024_
+_Última actualización: Julio 2025_
 _Versión: 1.0.0_
