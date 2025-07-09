@@ -17,4 +17,8 @@ public interface GrupoRepository extends JpaRepository<Grupo, Long> {
     Optional<Grupo> findByNombre(String nombre);
     @Query("SELECT g FROM Grupo g LEFT JOIN FETCH g.mensajes WHERE g.id = :id")
     Optional<Grupo> findByIdConMensajes(@Param("id") Long id);
+
+    // Buscar todos los grupos donde el usuario es miembro
+    @Query("SELECT g FROM Grupo g JOIN g.miembros m WHERE m = :usuario")
+    java.util.List<Grupo> findByMiembrosContaining(@Param("usuario") com.steampals.steampals.model.Usuario usuario);
 }
