@@ -18,7 +18,7 @@ import jakarta.transaction.Transactional;
 @ActiveProfiles("test")
 @SpringBootTest
 @Transactional
-public class MensajePrivadoServiceTest {
+class MensajePrivadoServiceTest {
 
     @Autowired
     private MensajePrivadoRepository mensajeRepo;
