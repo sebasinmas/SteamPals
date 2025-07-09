@@ -39,10 +39,7 @@ public class WebConfig {
                         .requestMatchers(
                                 "/", 
                                 "/index.html",
-                                "/assets/**",
-                                "/auth/login",
-                                "/auth/validarJWT",
-                                "/favicon.ico")
+                                "/assets/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/usuario/**").authenticated()
