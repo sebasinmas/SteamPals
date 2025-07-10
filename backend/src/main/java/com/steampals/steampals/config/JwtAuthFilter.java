@@ -31,24 +31,26 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            String token = authHeader.substring(7);
             try {
+                String token = authHeader.substring(7);
                 Claims claims = jwtUtil.validarToken(token);
                 String username = claims.getSubject();
                 String rol = claims.get("rol", String.class);
 
                 if (username != null && rol != null) {
                     List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + rol));
-                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                            username, null, authorities);
+                    UsernamePasswordAuthenticationToken authentication =
+                            new UsernamePasswordAuthenticationToken(username, null, authorities);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (Exception e) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token inválido");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("Token inválido");
+                return;
             }
         }
-
-        filterChain.doFilter(request, response); // Sigue con la cadena
+        // Si no hay token o no empieza con Bearer, sigue el flujo normal (rutas públicas o error lo maneja Spring)
+        filterChain.doFilter(request, response);
     }
 
 }

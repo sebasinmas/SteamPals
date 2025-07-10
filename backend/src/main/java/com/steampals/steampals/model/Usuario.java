@@ -6,16 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,13 +35,23 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Builder
+@Table(name = "usuario")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario {
     /**
      * ID único del usuario, generado automáticamente por la base de datos.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
+
+    /**
+     * ID de Steam del usuario, utilizado para vincular la cuenta de Steam
+     */
+
+    private String steamId;
+
     /**
      * Nombre de usuario del usuario, es un nickname no único
      */
@@ -97,31 +101,31 @@ public class Usuario {
      */
     private Boolean suspendido;
 
-    @OneToMany(mappedBy = "usuario1")
+    @OneToMany(mappedBy = "usuario1", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<MatchUsuario> matchesComoUsuario1;
 
-    @OneToMany(mappedBy = "usuario2")
+    @OneToMany(mappedBy = "usuario2", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<MatchUsuario> matchesComoUsuario2;
 
     @Builder.Default
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     @Builder.Default
-    @OneToMany(mappedBy = "emisor")
+    @OneToMany(mappedBy = "emisor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajePrivado> mensajesPrivEnviados = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "receptor")
+    @OneToMany(mappedBy = "receptor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajePrivado> mensajesPrivRecibidos = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "emisor")
+    @OneToMany(mappedBy = "emisor", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<MensajeGrupal> mensajesGrupalesEnviados = new ArrayList<>();
     
     @Builder.Default
-    @OneToMany(mappedBy = "reportado")
+    @OneToMany(mappedBy = "reportado", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Reporte> reportesRecibidos = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "reportador")
+    @OneToMany(mappedBy = "reportador", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Reporte> reportesRealizados = new ArrayList<>();
 
 

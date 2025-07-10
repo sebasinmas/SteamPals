@@ -2,17 +2,11 @@ package com.steampals.steampals.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 
 /**
@@ -32,6 +26,7 @@ import jakarta.persistence.ManyToOne;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="mensaje_privado")
 public class MensajePrivado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

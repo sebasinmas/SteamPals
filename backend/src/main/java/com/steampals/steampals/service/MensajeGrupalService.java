@@ -12,15 +12,21 @@ import com.steampals.steampals.repository.GrupoRepository;
 import com.steampals.steampals.repository.MensajeGrupalRepository;
 import com.steampals.steampals.repository.UsuarioRepository;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class MensajeGrupalService {
 
     private final MensajeGrupalRepository mensajeGrupalRepository;
     private final GrupoRepository grupoRepository;
     private final UsuarioRepository usuarioRepository;
+
+    public MensajeGrupalService(MensajeGrupalRepository mensajeGrupalRepository,
+                                GrupoRepository grupoRepository,
+                                UsuarioRepository usuarioRepository) {
+        this.mensajeGrupalRepository = mensajeGrupalRepository;
+        this.grupoRepository = grupoRepository;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     public List<MensajeGrupal> obtenerMensajesDeGrupo(Long grupoId) {
         return mensajeGrupalRepository.findByGrupoIdOrderByFechaEnvioAsc(grupoId);

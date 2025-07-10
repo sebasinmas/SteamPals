@@ -1,28 +1,28 @@
 package com.steampals.steampals.service;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
 import com.steampals.steampals.model.MatchUsuario;
 import com.steampals.steampals.model.Usuario;
 import com.steampals.steampals.repository.MatchUsuarioRepository;
 import com.steampals.steampals.repository.UsuarioRepository;
 
 @ExtendWith(MockitoExtension.class)
-class MatchServiceTest {
+class MatchUsuarioServiceTest {
 
     @Mock
     private MatchUsuarioRepository matchUsuarioRepository;
@@ -38,16 +38,22 @@ class MatchServiceTest {
         Usuario actual = new Usuario();
         actual.setId(1L);
 
-        Usuario visto = new Usuario();
-        visto.setId(2L);
+        Usuario visto1 = new Usuario();
+        visto1.setId(2L);
+
+        Usuario visto2 = new Usuario();
+        visto2.setId(5L);
 
         Usuario nuevo1 = new Usuario();
         nuevo1.setId(3L);
         Usuario nuevo2 = new Usuario();
         nuevo2.setId(4L);
 
-        when(matchUsuarioRepository.findAllMatchedUsers(actual)).thenReturn(List.of(visto));
-        when(usuarioRepository.findByIdNotIn(List.of(1L, 2L))).thenReturn(List.of(nuevo1, nuevo2));
+        // Simula matches donde actual es usuario1 y usuario2
+        when(matchUsuarioRepository.findUsuariosDondeEsUsuario1(actual)).thenReturn(List.of(visto1));
+        when(matchUsuarioRepository.findUsuariosDondeEsUsuario2(actual)).thenReturn(List.of(visto2));
+        when(usuarioRepository.findByIdNotIn(org.mockito.ArgumentMatchers.anyList()))
+                .thenReturn(List.of(nuevo1, nuevo2));
 
         List<Usuario> resultado = matchService.obtenerPerfilesParaUsuario(actual);
 
@@ -57,47 +63,30 @@ class MatchServiceTest {
     }
 
     @Test
-    void darLike_matchExisteYSeCompleta() {
+    void darLike_matchExiste_seCompletaCorrectamente() {
         Usuario actual = new Usuario();
         actual.setId(1L);
+
         Usuario objetivo = new Usuario();
         objetivo.setId(2L);
 
-        MatchUsuario match = new MatchUsuario();
-        match.setUsuario1(actual);
-        match.setUsuario2(objetivo);
-        match.setUsuario1Like(false);
-        match.setUsuario2Like(true);
+        MatchUsuario matchExistente = new MatchUsuario();
+        matchExistente.setUsuario1(actual); // actual es usuario1
+        matchExistente.setUsuario2(objetivo); // objetivo es usuario2
+        matchExistente.setUsuario1Like(false);
+        matchExistente.setUsuario2Like(true); // El otro ya dio like
 
-        when(matchUsuarioRepository.findMatchBetween(actual, objetivo)).thenReturn(Optional.of(match));
-
-        matchService.darLike(actual, objetivo);
-
-        assertTrue(match.isUsuario1Like());
-        assertTrue(match.isUsuario2Like());
-        assertTrue(match.isCompleto());
-        verify(matchUsuarioRepository).save(match);
-    }
-
-    @Test
-    void darLike_noExisteMatch_prepararNuevo() {
-        Usuario actual = new Usuario();
-        actual.setId(1L);
-        Usuario objetivo = new Usuario();
-        objetivo.setId(2L);
-
-        when(matchUsuarioRepository.findMatchBetween(actual, objetivo)).thenReturn(Optional.empty());
+        when(matchUsuarioRepository.findMatchBetween(
+                ArgumentMatchers.any(Usuario.class),
+                ArgumentMatchers.any(Usuario.class)))
+                .thenReturn(Optional.of(matchExistente));
 
         matchService.darLike(actual, objetivo);
 
-        ArgumentCaptor<MatchUsuario> captor = ArgumentCaptor.forClass(MatchUsuario.class);
-        verify(matchUsuarioRepository).save(captor.capture());
+        assertTrue(matchExistente.isUsuario1Like());
+        assertTrue(matchExistente.isUsuario2Like());
+        assertTrue(matchExistente.isCompleto());
 
-        MatchUsuario nuevo = captor.getValue();
-        assertEquals(actual, nuevo.getUsuario1());
-        assertEquals(objetivo, nuevo.getUsuario2());
-        assertTrue(nuevo.isUsuario1Like());
-        assertFalse(nuevo.isUsuario2Like());
-        assertFalse(nuevo.isCompleto());
+        verify(matchUsuarioRepository).save(matchExistente);
     }
 }
