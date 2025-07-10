@@ -5,31 +5,91 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Gamepad2, ArrowLeft, Lock, Trash2, Monitor } from "lucide-react";
+import { updateUser } from "@/api/user";
+import { useEffect } from "react";
+
 
 export default function Settings() {
-  const [email, setEmail] = useState("shadowhunter87@email.com");
+  const [email, setEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [steamConnected, setSteamConnected] = useState(true);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
 
-  const updatePassword = () => {
+        const response = await fetch("http://localhost:8080/api/usuario/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+
+        if (!response.ok) throw new Error("No se pudo obtener el usuario");
+
+        const data = await response.json();
+        setEmail(data.email);
+      } catch (err) {
+        console.error("Error obteniendo usuario:", err);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+
+  const handleUpdateEmail = async () => {
+    try {
+      await updateUser({ email });
+      alert("Email actualizado correctamente");
+    } catch (err) {
+      alert("Error al actualizar email: " + (err as Error).message);
+    }
+  };
+
+  const handleUpdatePassword = async () => {
     if (newPassword !== confirmPassword) {
       alert("Las contraseñas no coinciden");
       return;
     }
-    console.log("Actualizando contraseña...");
-    setCurrentPassword("");
-    setNewPassword("");
-    setConfirmPassword("");
+    try {
+      await updateUser({ password: newPassword });
+      alert("Contraseña actualizada correctamente");
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+    } catch (err) {
+      alert("Error al actualizar contraseña: " + (err as Error).message);
+    }
   };
 
-  const connectSteam = () => {
-    setSteamConnected(!steamConnected);
-    console.log(
-      steamConnected ? "Desconectando Steam..." : "Conectando Steam...",
-    );
-  };
+  const handleSteamAction = () => {
+  if (steamConnected) {
+    // 🔴 Desconectar (llamar a tu backend para "unlinkear" Steam)
+    fetch("http://localhost:8080/api/steam/unlink", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          setSteamConnected(false);
+          console.log("Steam desconectado");
+        } else {
+          console.error("Error al desconectar Steam");
+        }
+      })
+      .catch((err) => console.error(err));
+  } else {
+    // 🟢 Conectar: redirige al backend para iniciar login con Steam
+    window.location.href = "http://localhost:8080/auth/steam/login";
+  }
+};
+
+
 
   const deleteAccount = () => {
     if (
@@ -43,7 +103,6 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-card">
-      {/* Header */}
       <header className="border-b border-border/50 backdrop-blur-sm bg-background/80 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -96,7 +155,9 @@ export default function Settings() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <Button size="sm">Actualizar email</Button>
+                <Button size="sm" onClick={handleUpdateEmail}>
+                  Actualizar email
+                </Button>
               </CardContent>
             </Card>
 
@@ -138,7 +199,7 @@ export default function Settings() {
                     placeholder="Confirmar nueva contraseña"
                   />
                 </div>
-                <Button onClick={updatePassword} size="sm">
+                <Button onClick={handleUpdatePassword} size="sm">
                   Actualizar contraseña
                 </Button>
               </CardContent>
@@ -165,7 +226,7 @@ export default function Settings() {
                   </div>
                   <Button
                     variant={steamConnected ? "destructive" : "default"}
-                    onClick={connectSteam}
+                    onClick={handleSteamAction}
                     size="sm"
                   >
                     {steamConnected ? "Desconectar" : "Conectar"}
