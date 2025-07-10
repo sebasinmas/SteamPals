@@ -45,7 +45,6 @@
     "server/**/*",
     "shared/**/*",
     "vite.config.ts",
-    "vite.config.server.ts"
   ],
   "exclude": [
     "node_modules",
