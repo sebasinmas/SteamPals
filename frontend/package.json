@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "express": "^4.21.2",
+    "jwt-decode": "^4.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
