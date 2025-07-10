@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect } from "react";
+
 import {
   Gamepad2,
   ArrowLeft,
@@ -18,25 +20,49 @@ import {
   Star,
   MapPin,
   Calendar,
-  Shield,
 } from "lucide-react";
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
-  const [profile, setProfile] = useState({
-    username: "ShadowHunter87",
-    bio: "Jugador competitivo de FPS y RPG. Busco squad para ranked!",
-    location: "Madrid, España",
-    age: 24,
-    favoriteGames: ["CS2", "Valorant", "Elden Ring", "Rocket League"],
-    playStyle: ["Competitivo", "Estratégico", "Team Player"],
-    steamConnected: true,
-    level: 87,
-    achievements: 342,
-    hoursPlayed: "2,450h",
-    memberSince: "Enero 2023",
-    status: "En línea",
-  });
+  const [profile, setProfile] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("No token found");
+
+        const res = await fetch("http://localhost:8080/api/usuario/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("No se pudo cargar el perfil");
+        }
+
+        const data = await res.json();
+        setProfile({
+          username: data.usuario,
+          bio: data.descripcion || "Sin descripción",
+          location: data.pais || "Ubicación desconocida",
+          age: data.edad,
+          favoriteGames: [],
+          playStyle: [],
+          steamConnected: true,
+          level: 1,
+          achievements: 0,
+          hoursPlayed: "0h",
+          memberSince: "2025",
+        });
+      } catch (err) {
+        console.error("Error al cargar el perfil:", err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   const handleSave = () => {
     setIsEditing(false);
@@ -47,6 +73,14 @@ export default function Profile() {
     setIsEditing(false);
     // Aquí podrías revertir los cambios
   };
+  if (!profile) {
+  return (
+    <div className="h-screen flex items-center justify-center">
+      <p className="text-muted-foreground text-lg">Cargando perfil...</p>
+    </div>
+  );
+}
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -110,13 +144,6 @@ export default function Profile() {
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl mx-auto">
                     🎮
                   </div>
-                  <div
-                    className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 border-background ${
-                      profile.status === "En línea"
-                        ? "bg-green-400"
-                        : "bg-gray-400"
-                    }`}
-                  ></div>
                 </div>
 
                 {isEditing ? (
@@ -145,13 +172,6 @@ export default function Profile() {
                       <MapPin className="w-4 h-4 mr-1" />
                       {profile.location}
                     </div>
-                    <Badge
-                      variant={
-                        profile.status === "En línea" ? "default" : "secondary"
-                      }
-                    >
-                      {profile.status}
-                    </Badge>
                   </div>
                 )}
 
