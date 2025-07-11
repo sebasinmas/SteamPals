@@ -1,8 +1,23 @@
+version: '3.8'
+
 services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://host.docker.internal:32768/steampalsdb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=steampalsadmin
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+
   mariadb:
     image: mariadb:11.3
     ports:
-      - "32768:3306"  
+      - "32768:3306"
     environment:
       MYSQL_ROOT_PASSWORD: steampalsadmin
       MYSQL_DATABASE: steampalsdb

@@ -17,14 +17,35 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Login attempt:", { username, password });
-    // Simulate successful login
-    if (username && password) {
-      navigate("/home");
+  const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:8080/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: username,
+        contrasenia: password,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorMsg = await res.text();
+      throw new Error(errorMsg || "Error desconocido");
     }
-  };
+
+    const token = await res.text();
+    localStorage.setItem("token", token);
+
+    navigate("/home");
+  } catch (err: any) {
+    alert("Error al hacer login: " + err.message);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-card">
@@ -69,10 +90,7 @@ export default function Login() {
             <CardContent>
               <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="login-username"
-                    className="text-sm font-medium"
-                  >
+                  <Label htmlFor="login-username" className="text-sm font-medium">
                     Nombre de Usuario
                   </Label>
                   <Input
@@ -87,10 +105,7 @@ export default function Login() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="login-password"
-                    className="text-sm font-medium"
-                  >
+                  <Label htmlFor="login-password" className="text-sm font-medium">
                     Contraseña
                   </Label>
                   <Input

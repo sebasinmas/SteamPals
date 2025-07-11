@@ -27,10 +27,8 @@ interface UserProfileData {
   achievements: number;
   hoursPlayed: string;
   memberSince: string;
-  status: string;
   avatar: string;
   steamConnected: boolean;
-  isOnline: boolean;
 }
 
 // Mock profiles data - en una app real vendría de una API
@@ -45,10 +43,8 @@ const MOCK_PROFILES: { [key: string]: UserProfileData } = {
     achievements: 342,
     hoursPlayed: "2,450h",
     memberSince: "Enero 2023",
-    status: "En línea",
     avatar: "🎮",
     steamConnected: true,
-    isOnline: true,
   },
   StarGazer_22: {
     username: "StarGazer_22",
@@ -60,10 +56,8 @@ const MOCK_PROFILES: { [key: string]: UserProfileData } = {
     achievements: 578,
     hoursPlayed: "3,120h",
     memberSince: "Noviembre 2022",
-    status: "Desconectado",
     avatar: "🌟",
     steamConnected: true,
-    isOnline: false,
   },
   ThunderStrike_Pro: {
     username: "ThunderStrike_Pro",
@@ -75,10 +69,8 @@ const MOCK_PROFILES: { [key: string]: UserProfileData } = {
     achievements: 892,
     hoursPlayed: "5,670h",
     memberSince: "Marzo 2022",
-    status: "Ausente",
     avatar: "⚡",
     steamConnected: true,
-    isOnline: false,
   },
   LunarAce_21: {
     username: "LunarAce_21",
@@ -90,10 +82,8 @@ const MOCK_PROFILES: { [key: string]: UserProfileData } = {
     achievements: 1205,
     hoursPlayed: "1,890h",
     memberSince: "Junio 2023",
-    status: "En línea",
     avatar: "🎯",
     steamConnected: true,
-    isOnline: true,
   },
 };
 
@@ -225,11 +215,6 @@ export default function UserProfile() {
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl mx-auto">
                     {profile.avatar}
                   </div>
-                  <div
-                    className={`absolute bottom-2 right-2 w-6 h-6 rounded-full border-2 border-background ${
-                      profile.isOnline ? "bg-green-400" : "bg-gray-400"
-                    }`}
-                  ></div>
                 </div>
 
                 <h2 className="text-2xl font-bold mb-2">{profile.username}</h2>
@@ -237,12 +222,6 @@ export default function UserProfile() {
                   <MapPin className="w-4 h-4 mr-1" />
                   {profile.location}
                 </div>
-                <Badge
-                  variant={profile.isOnline ? "default" : "secondary"}
-                  className="mb-4"
-                >
-                  {profile.status}
-                </Badge>
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
