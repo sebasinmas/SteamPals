@@ -1,5 +1,6 @@
 package com.steampals.steampals.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,9 @@ public class MatchService {
     private final UsuarioRepository usuarioRepository;
 
     public List<Usuario> obtenerPerfilesParaUsuario(Usuario actual) {
-        List<Usuario> yaVistos = matchUsuarioRepository.findAllMatchedUsers(actual);
+        List<Usuario> yaVistos = new ArrayList<>();
+        yaVistos.addAll(matchUsuarioRepository.findUsuariosDondeEsUsuario1(actual));
+        yaVistos.addAll(matchUsuarioRepository.findUsuariosDondeEsUsuario2(actual));
         yaVistos.add(actual);
         return usuarioRepository.findByIdNotIn(yaVistos.stream().map(Usuario::getId).toList());
     }

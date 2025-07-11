@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "jwtsecret",
+  "type": "java.lang.String",
+  "description": "Esta es solo una variable de entorno que se usa para la autenticación JWT. No es necesario cambiarla."
+}]}

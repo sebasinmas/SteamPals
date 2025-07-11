@@ -1,5 +1,6 @@
 package com.steampals.steampals.repository;
 
+
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,24 +16,31 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.steampals.steampals.model.Usuario;
 
+
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private GrupoRepository grupoRepository;
+    @Autowired
+    private MensajeGrupalRepository mensajeGrupalRepository;
+    @Autowired
+    private MatchUsuarioRepository matchUsuarioRepository;
 
     @BeforeEach // este método se ejecuta antes de cada prueba
-    public void setup() {
-         // Limpia base por si acaso
+    void setup() {
+        grupoRepository.deleteAll();
+        mensajeGrupalRepository.deleteAll();
         usuarioRepository.deleteAll();
-
+        matchUsuarioRepository.deleteAll();
         // Crea un usuario de prueba
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario("Kevin");
         usuario.setEmail("kevin@email.com");
 
         usuarioRepository.save(usuario);
-
     }
     @Test
     @Order(1)
@@ -50,5 +58,5 @@ class UsuarioRepositoryTest {
 
         assertFalse(resultado.isPresent());
     }
-    
 }
+

@@ -17,12 +17,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableMethodSecurity // Habilita la seguridad a nivel de métodos (anotaciones como @PreAuthorize)
 @EnableWebSecurity // Habilita la configuración de seguridad web
 public class WebConfig {
     JwtAuthFilter jwtAuthFilter;
+
+    String usuarioRoute = "/api/usuario";
 
     public WebConfig(JwtAuthFilter jwtAuthFilter) {
         this.jwtAuthFilter = jwtAuthFilter;
@@ -41,10 +44,10 @@ public class WebConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/usuario").permitAll() // registro libre
-                        .requestMatchers(HttpMethod.GET, "/api/usuario/me").authenticated()
-                        .requestMatchers(HttpMethod.PUT, "/api/usuario").authenticated()
-                        .requestMatchers(HttpMethod.DELETE, "/api/usuario").hasRole("ADMINISTRADOR")
+                        .requestMatchers(HttpMethod.POST, usuarioRoute).permitAll() // registro libre
+                        .requestMatchers(HttpMethod.GET, usuarioRoute + "/me").authenticated()
+                        .requestMatchers(HttpMethod.PUT, usuarioRoute).authenticated()
+                        .requestMatchers(HttpMethod.DELETE, usuarioRoute).hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

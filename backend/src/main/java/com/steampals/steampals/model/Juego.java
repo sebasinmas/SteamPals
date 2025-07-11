@@ -3,29 +3,33 @@ package com.steampals.steampals.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "juego", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "app_id")
+})
 public class Juego {
   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, name = "app_id")
+    private Long appId;
+
     private String nombre;
 
-    @OneToMany(mappedBy = "juego")
+    @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<UsuarioTieneJuego> usuarioTieneJuego = new HashSet<>();
     
     /**

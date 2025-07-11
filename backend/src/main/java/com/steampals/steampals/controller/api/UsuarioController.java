@@ -30,7 +30,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/usuario")
-    public ResponseEntity<?> crearUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
+    public ResponseEntity<String> crearUsuario(@RequestBody RegistroUsuarioDTO registroUsuarioDTO) {
         try {
             Usuario nuevoUsuario = usuarioService.registrarUsuario(registroUsuarioDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con ID: " + nuevoUsuario.getId());
@@ -41,10 +41,8 @@ public class UsuarioController {
 
     @DeleteMapping("/usuario")
     @PreAuthorize("hasRole('ADMINISTRADOR')")
-    public ResponseEntity<?> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto, Authentication auth) {
+    public ResponseEntity<String> eliminarUsuario(@RequestBody EliminarUsuarioDTO dto, Authentication auth) {
         try {
-            System.out.println("Principal: " + auth.getPrincipal());
-            System.out.println("Authorities: " + auth.getAuthorities());
             usuarioService.eliminarUsuario(dto.getEmail());
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (RuntimeException ex) {
@@ -53,7 +51,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/usuario")
-    public ResponseEntity<?> actualizarUsuario(@RequestBody UsuarioUpdateDTO updateDTO, Authentication authentication) {
+    public ResponseEntity<String> actualizarUsuario(@RequestBody UsuarioUpdateDTO updateDTO, Authentication authentication) {
         try {
             String email = authentication.getName(); // obtenido desde el JWT
             Usuario usuarioActualizado = usuarioService.actualizarUsuario(email, updateDTO);
@@ -64,7 +62,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuario/me")
-    public ResponseEntity<?> getPerfilUsuario(Authentication authentication) {
+    public ResponseEntity<UsuarioDTO> getPerfilUsuario(Authentication authentication) {
         // Obtén el usuario autenticado desde el objeto Authentication
         String email = authentication.getName(); // email desde el token
         UsuarioDTO usuarioDTO = usuarioService.obtenerUsuarioPorEmail(email);

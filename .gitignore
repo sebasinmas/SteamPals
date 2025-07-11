@@ -6,3 +6,6 @@
 
 # Ignorar carpeta .idea completa
 .idea/
+
+# Local Netlify folder
+.netlify
