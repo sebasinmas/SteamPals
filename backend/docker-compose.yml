@@ -1,0 +1,13 @@
+services:
+  mariadb:
+    image: mariadb:11.3
+    ports:
+      - "32768:3306"  
+    environment:
+      MYSQL_ROOT_PASSWORD: steampalsadmin
+      MYSQL_DATABASE: steampalsdb
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
